@@ -42,6 +42,8 @@ abstract class main {
         $smarty->debugging = DEBUGING;
 
         $this->template->baseURI = baseURI;
+        
+        $this->loadAdverts();
 
         foreach ($this->template as $key => $variable)
         {
@@ -50,5 +52,21 @@ abstract class main {
 
         $smarty->display($template.'.tpl');
     }
+
+    private function loadAdverts()
+    {
+        $this->template->advert['big']['img'] = 'xxxx';
+        $this->template->advert['big']['link'] = 'neco.xxx';
+        $this->template->advert['button1']['img'] = 'xxxx';
+        $this->template->advert['button1']['link'] = 'neco.xxx';
+        $this->template->advert['button2']['img'] = 'xxxx';
+        $this->template->advert['button2']['link'] = 'neco.xxx';
+        $this->template->advert['small1']['img'] = 'xxxx';
+        $this->template->advert['small1']['link'] = 'neco.xxx';
+        $this->template->advert['small2']['img'] = 'xxxx';
+        $this->template->advert['small2']['link'] = 'neco.xxx';
+
+    }
+
 }
 ?>

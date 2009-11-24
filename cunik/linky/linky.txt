@@ -1,0 +1,5 @@
+home                        /
+about us                    /page/about-us/
+packages                    /page/packages/
+sig in / register           /page/login/
+contact us                  /page/contact-us
