@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="maltabusinesscentre.css" rel="stylesheet" type="text/css" />
+
+<script language="Javascript">
+function counterUpdate(opt_countedTextBox, opt_countBody, opt_maxSize) {
+        var countedTextBox = opt_countedTextBox ? opt_countedTextBox : "counttxt";
+        var countBody = opt_countBody ? opt_countBody : "countBody";
+        var maxSize = opt_maxSize ? opt_maxSize : 1024;
+
+        var field = document.getElementById(countedTextBox);
+
+        if (field && field.value.length >= maxSize) {
+                field.value = field.value.substring(0, maxSize);
+        }
+        var txtField = document.getElementById(countBody);
+                if (txtField) {  
+                txtField.innerHTML = field.value.length;
+        }
+}
+</script>
+
+</head>
+
+<body onload="counterUpdate('summary', 'countBody','300');">
+
+<table width="990px" align="center" bgcolor="#FFFFFF" cellpadding="0px" cellspacing="0px" border="0px">
+    <tr>
+        <td width="46px"></td>
+        <td>
+        	<table cellpadding="0px" cellspacing="0px" border="0px" width="100%" >
+            	<tr valign="middle" height="120">
+                	<td width="431px"><img src="images/MaltaBusinessCentre_02.png" width="431" height="91" alt="Malta Business Centre Logo" />
+                    </td>
+             	</tr>
+                <tr>
+                    <td valign="bottom" align="right">
+						<ul class="menu">
+                        	<li class="menu"><a href="index.html">Home</a></li>
+                        	<li class="menu"><a href="about.html">About Us</a></li>
+                            <li class="menu"><a href="packages.html">Packages</a></li>
+                            <li class="menu"><a href="login.html">Sign In / Register</a></li>
+                            <li class="menu"><a href="contactus.html">Contact Us</a></li>
+                        </ul>
+                    
+                    </td>
+                </tr>
+            </table>
+            
+        
+        </td>
+    </tr>
+    <tr>
+        <td width="46px"></td>
+        <td background="images/MaltaBusinessCentre_04.jpg" height="142px" valign="middle" align="center">
+            <form id="form1" name="form1" method="post" action="">
+                <table>
+                    <tr>
+                    <td align="right">
+                       	  <div>
+                                <div class="SearchText" >
+                                    <input name="keyword" type="text" id="keyword" size="85" />
+                                </div>
+                                <div class="SearchOption" >
+                                    <input name="searchoption" type="radio" value="keyword" checked />keyword
+                                    <input name="searchoption" type="radio" value="company" />company
+                                </div>
+                          </div>
+                        </td>
+                      <td valign="top">
+                            <div class="myButton"><INPUT type="submit" name="" value="Search"></div>
+                        </td>
+                        <td align="left" valign="top">advanced search<br />
+                          preferences</td>
+                    </tr>
+                </table>
+          </form>
+        </td>
+    </tr>    
+    <tr>
+        <td width="46px"></td>
+        <td><img src="images/MaltaBusinessCentre_05.png" width="954" height="20" /></td>
+    </tr>
+    <tr>
+        <td width="46px"></td>
+        <td  align="center">
+               <table cellpadding="0px" cellspacing="0px" border="0px" >
+            	<tr>
+                	<td height="90px" width="728" bgcolor="#CCCCCC"> advertise here (leaderboard)</td>
+                    <td height="90px" width="3" bgcolor="#fff"></td>
+                    <td height="90px" width="120" bgcolor="#CCCCCC"> advertise here (button1)</td>
+                    <td height="90px" width="3" bgcolor="#fff"></td>
+                    <td height="90px" width="120" bgcolor="#CCCCCC"> advertise here (button1)</td>
+                </tr>
+        	</table>
+    	</td>
+    </tr> 
+    <tr>
+        <td width="46px"></td>
+        <td><img src="images/MaltaBusinessCentre_05.png" width="954" height="20" /></td>
+    </tr>
+    <tr>
+        <td width="46px"></td>
+        <td class="DirectoryTitle">Directory: Directory Name</td>
+    </tr>
+    <tr>
+        <td width="46px"></td>
+        <td class="DirectoryText">
+       	  <form action="" method="post" enctype="multipart/form-data" name="form2" id="form2">
+          	<h1><label><em>Company Name:</em>
+                <input name="company" type="text" id="address" size="60" />
+              </label></h1>
+          
+        	<table cellpadding="0px" cellspacing="5px" border="0px" width="100%">
+                <tr>
+                	<td valign="top" width="242px"><img src="images/companies/1301.jpg" alt="Company Name" width="242" height="190" />
+                	  <label><em>Upload New Image:
+                	    </em>
+                	    <input type="file" name="image" id="image" />
+              	    </label></td>
+                    <td valign="top">
+                    	<textarea name="summary" id="summary" cols="80" rows="5" onkeyup="counterUpdate('summary', 'countBody','300');"></textarea><br />You typed <B><span id="countBody">0</span></b> characters.
+  Maximum: 300 characters <br /><br />
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+                                <td valign="top" width="30%"><strong>Address:</strong><br />
+                                  <label><em>Address:</em><br/>
+                                    <input name="address" type="text" id="address" size="30" />
+                                  </label>
+                                  <br/>
+                                  <label><em>Street:</em><br/>
+                                    <input name="street" type="text" id="street" value="" size="30" />
+                                  </label>
+                                  <br/>
+                                  <label><em>Locality:</em><br/>
+                                    <select name="locality" id="locality">
+                                    <option value="0" selected="selected">-- Select Locality --</option>
+                                        <option value="ATD">Attard</option>
+                                        <option value="BZN">Balzan</option>
+                                        <option value="MST">Bidnija</option>
+                                        <option value="BRG">Birgu/Vittoriosa</option>
+                                        <option value="BKR">Birkirkara</option>
+                                        <option value="BBG">Birżebbuġa</option>
+                                        <option value="BML">Bormla/Cospicua</option>
+                                        <option value="DGL">Dingli</option>
+                                        <option value="FGR">Fgura</option>
+                                        <option value="FRN">Floriana</option>
+                                        <option value="GHR">Għargħur</option>
+                                        <option value="GDJ">Gudja</option> 
+                                        <option value="GZR">Gżira</option>
+                                        <option value="HMR">Ħamrun</option>
+                                        <option value="IKL">Iklin</option>
+                                        <option value="KKR">Kalkara</option>
+                                        <option value="KKP">Kirkop</option>
+                                        <option value="LJA">Lija</option>
+                                        <option value="LQA">Luqa</option>
+                                        <option value="MRS">Marsa</option>
+                                        <option value="MSK">Marsaskala</option>
+                                        <option value="MXK">Marsaxlokk</option>
+                                        <option value="MDN">Mdina</option>
+                                        <option value="MLH">Mellieħa</option>
+                                        <option value="MGR">Mġarr</option>
+                                        <option value="MST">Mosta</option>
+                                        <option value="MQB">Mqabba</option>
+                                        <option value="MSD">Msida</option>
+                                        <option value="MTF">Mtarfa</option>
+                                        <option value="NXR">Naxxar</option>
+                                        <option value="PLA">Paola</option>
+                                        <option value="PBK">Pembroke</option>
+                                        <option value="PTA">Pietà</option>
+                                        <option value="QRM">Qormi</option>
+                                        <option value="QRD">Qrendi</option>
+                                        <option value="RBT">Rabat</option>
+                                        <option value="SFI">Safi</option>
+                                        <option value="SGN">San Ġwann</option>
+                                        <option value="SLC">Santa Luċija</option>
+                                        <option value="SVR">Santa Venera</option>
+                                        <option value="ISL">Senglea/Isla</option>
+                                        <option value="SGW">Siġġiewi</option> 
+                                        <option value="SLM">Sliema</option>
+                                        <option value="STJ">St. Julian's/San Ġiljan</option>
+                                        <option value="SPB">St. Paul's Bay/San Pawl il-Baħar</option>
+                                        <option value="SWQ">Swieqi</option>
+                                        <option value="TXN">Tarxien</option>
+                                        <option value="XBX">Ta' Xbiex</option>
+                                        <option value="VLT">Valletta</option> 
+                                        <option value="XJR">Xgħajra</option>
+                                        <option value="ZBR">Żabbar</option>
+                                        <option value="ZBG">Żebbuġ</option>
+                                        <option value="ZTN">Żejtun</option>
+                                        <option value="ZRQ">Żurrieq</option>
+                                        <option value="FNT">Fontana (Gozo)</option>
+                                        <option value="GSM">Għajnsielem (Gozo)</option>
+                                        <option value="GRB">Għarb (Gozo)</option>
+                                        <option value="GSR">Għasri (Gozo)</option>
+                                        <option value="KCM">Kerċem (Gozo)</option>
+                                        <option value="MXR">Munxar (Gozo)</option>
+                                        <option value="XLN">Xlendi (Gozo)</option>
+                                        <option value="NDR">Nadur (Gozo)</option>
+                                        <option value="QLA">Qala (Gozo)</option>
+                                        <option value="VCT">Rabat/Victoria (Gozo)</option>
+                                        <option value="SLZ">San Lawrenz (Gozo)</option>
+                                        <option value="SNT">Sannat (Gozo)</option>
+                                        <option value="XRA">Xagħra (Gozo)</option>
+                                        <option value="XWK">Xewkija (Gozo)</option>
+                                        <option value="ZBB">Żebbuġ (Gozo)</option>
+                                        <option value="MFN">Marsalforn (Gozo)</option>
+                                        <option value="CMN">Comino</option>
+                                    </select>
+                                  </label><br/> 
+                                  <label><em>Post Code:</em><br/>
+                                    <input name="postcode" type="text" id="postcode" value="" size="10" maxlength="10" />
+                                  </label>
+                                  <br/>
+                                  <label><em>Country:</em><br/>
+                                    <select name="country" id="country">
+                                      <option value="0" selected="selected">-- Select Country --</option>
+                                      <option value="MLT">Malta</option>
+                                      <option value="GZO">Gozo</option>
+                                      <option value="CMN">Comino</option>
+                                    </select>
+                                </label></td>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0">
+                                        <tr>
+                                            <td valign="top"><strong>Contact:</strong></td>
+                                            <td width="5px"></td>
+                                            <td><label><em>First Name of First Contact:</em><br/>
+                                              <input name="Name1" type="text" id="Name1" size="40" />
+                                              </label><br />
+                                              <label><em>Surname of First Contact:</em><br/>
+                                              <input name="Surname1" type="text" id="Surname1" size="40" />
+                                            </label></td>
+                                        </tr>
+<tr>
+                                            <td></td>
+                                            <td width="5px"></td>
+                                            <td><label><em>First Name of Second Contact:</em><br/>
+                                              <input name="Name2" type="text" id="Name2" size="40" />
+                                              </label><br /> 
+                                            <label><em>Surname of Second Contact:</em><br/>
+                                              <input name="Surname2" type="text" id="Surname2" size="40" />
+</label></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>Tel:</strong></td>
+                                            <td width="5px"></td>
+                                            <td><label><em>Telephone 1:</em><br/>
+                                              <input name="tel1" type="text" id="tel1" size="27" />
+                                            </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td width="5px"></td>
+                                            <td><label><em>Telephone 2:</em><br/>
+                                              <input name="tel2" type="text" id="tel2" size="27" />
+                                            </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>Fax:</strong></td>
+                                          <td width="5px"></td>
+                                            <td><label><em>Fax Number:</em><br/>
+                                              <input name="fax" type="text" id="fax" size="27" />
+                                            </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>Mob:</strong></td>
+                                          <td width="5px"></td>
+                                            <td><label><em>Mobile Number:</em><br/>
+                                              <input name="mobile" type="text" id="mobile" size="27" />
+                                            </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>Email:</strong></td>
+                                          <td width="5px"></td>
+                                            <td><label><em>E-Mail Address:</em><br/>
+                                              <input name="email" type="text" id="email" size="40" />
+                                            </label></td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top"><strong>Web:</strong></td>
+                                          <td width="5px"></td>
+                                            <td><label><em>Website URL/Address:</em><br/>
+                                              <input name="website" type="text" id="website" size="40" />
+                                            </label></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td align="right" valign="bottom">
+                                  	            	
+                    			</td>
+                        <tr height="50">
+                          <td valign="bottom">&nbsp;</td>
+                          <td valign="bottom">
+                            <div class="myButton2">
+                            	<input type="submit" name="input" value="save" />
+                            </div>  
+                            <div class="myButton2">
+                            	<input type="button" name="input" value="cancel" />
+                            </div> 
+                          </td>
+                          <td align="right" valign="bottom">&nbsp;</td>
+                        </table>
+                    </td>
+                   
+                </tr>
+            </table>
+          	
+          </form>
+      </td>
+    </tr>
+   
+    <tr>
+        <td width="46px"></td>
+        <td><img src="images/MaltaBusinessCentre_05.png" width="954" height="20" /></td>
+    </tr>
+    <tr>
+        <td width="46px"></td>
+        <td align="center">
+        	<table cellpadding="0px" cellspacing="4px" border="0px" >
+            	<tr>
+                	<td height="60px" width="468" bgcolor="#CCCCCC"> advertise here</td>
+                    <td height="60px" width="468" bgcolor="#CCCCCC"> advertise here</td>
+                </tr>
+        	</table>
+        </td>
+    </tr>
+    
+    <tr>
+        <td width="46px"></td>
+        <td bgcolor="#666666">footer</td>
+    </tr>
+
+</table>
+
+</body>
+</html>
