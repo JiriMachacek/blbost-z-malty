@@ -1,0 +1,228 @@
+<!--
+body,td,th {
+	font-size: 13px;
+	line-height: 18px;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#F0F0F0;
+}
+
+div.myButton {
+	float:left;
+	width: 123px;
+	padding-right:5px;
+}
+
+div.myButton input{
+	background:url(../images/buttonSearchUp.jpg) no-repeat; 
+	cursor:pointer;
+	width: 123px;
+	height: 38px;
+	border: none;
+	color:#FFF;
+	font-size:16px;
+	font-weight:bold;
+}
+
+div.myButton:hover input{
+	background:url(../images/buttonSearchDown.jpg) no-repeat; 
+}
+
+div.myButton2 {
+	float:left;
+	width: 123px;
+	padding-right:5px;
+}
+
+div.myButton2 input{
+	background:url(../images/buttonMenuUp.jpg) no-repeat; 
+	cursor:pointer;
+	width: 123px;
+	height: 38px;
+	border: none;
+	color:#FFF;
+	font-size:14px;
+	font-weight:bold;
+}
+
+div.myButton2:hover input{
+	background:url(../images/buttonMenuDown.jpg) no-repeat; 
+}
+
+div.SearchOption {
+	background:url(../images/OptionBackground.png) no-repeat; 
+	width:169px;
+	height:40px;
+	z-index:2;
+	position:relative;
+	top:-7px;
+	color:#fff;
+	text-align:center;
+	padding-top:10px;
+}
+
+div.SearchText {
+	top:0px;
+	left:0px;
+	position:relative;
+	z-index:3;
+}
+
+
+
+ul.menu {
+	list-style-type: none;
+	line-height: 38px;
+	margin-left: -40px;
+}
+
+
+li.menu {
+	float:left;
+	padding-bottom:10px;
+	padding-right: 3px;
+	background-image:url(../images/buttonMenuUp.jpg);
+	background-repeat:no-repeat;
+	width:123px;
+	text-align:center;
+}
+
+li.menu:hover {
+	float:left;
+	padding-bottom:10px;
+	padding-right: 3px;
+	background-image:url(../images/buttonMenuDown.jpg);
+	background-repeat:no-repeat;
+	width:123px;
+	text-align:center;
+}
+
+li.menu a:hover {
+	color: #FFF;
+	text-decoration:none;
+}
+
+li.menu a {
+	color: #FFF;
+	text-decoration:none;
+}
+
+
+ul.editmenu {
+	list-style-type: none;
+	line-height: 40px;
+	margin-left: -35px;
+}
+
+
+li.editmenu {
+	background-image:url(../images/buttonMenuUp.jpg);
+	background-repeat:no-repeat;
+	width:123px;
+	text-align:center;
+}
+
+li.editmenu:hover {
+	background-image:url(../images/buttonMenuDown.jpg);
+	background-repeat:no-repeat;
+	width:123px;
+	text-align:center;
+}
+
+li.editmenu a:hover {
+	color: #FFF;
+	text-decoration:none;
+}
+
+li.editmenu a {
+	color: #FFF;
+	text-decoration:none;
+}
+
+
+ul.gallery {
+	list-style-type: none;
+	margin-left: -35px;
+}
+
+li.gallery {
+	float:left;
+	padding-top:0px;
+	padding-bottom:3px;
+	padding-right: 3px;
+	border:0px;
+}
+
+td.DirectoryTitle {
+	font-size: 15px;
+	font-weight:bold;
+	color:#006;
+	border-top:1px #999 solid; 
+	border-left:1px #999 solid; 
+	background-color:#F9F9F9; 
+	padding:5px
+}
+
+td.DirectoryTitleWarning {
+	font-size: 17px;
+	color:#F63;
+	border-top:1px #999 solid; 
+	border-left:1px #999 solid; 
+	background-color:#E0E0E0; 
+	padding:5px;
+	line-height: 24px;
+}
+
+td.DirectoryText {
+	border-bottom:1px #999 solid; 
+	border-left:1px #999 solid; 
+	background-color:#F9F9F9; 
+	padding:5px
+}
+
+td.DirectoryCat {
+	vertical-align:top;
+	border-bottom:1px #E4E4E4 solid; 
+	width: 25%;
+}
+
+td.DirectoryLastCat {
+	vertical-align:top;
+	width: 25%;
+}
+
+a:link {
+	color: #006;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	color:#900;
+}
+a:active {
+	text-decoration: none;
+	color: #009;
+}
+h1 {
+	font-size: 15px;
+	color: #900;
+}
+h2 {
+	font-size: 15px;
+	color:#666;
+}
+
+hr.hr {
+	height:1px;
+	border:0px;
+	background-color:#E0E0E0;
+}
+-->

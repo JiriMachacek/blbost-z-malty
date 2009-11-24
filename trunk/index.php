@@ -15,7 +15,7 @@ $user = (isset($_SESSION['user'])) ? $_SESSION['user'] : 0;
 $us = user::getInstance();
 $us->setUserID($user);
 
-
+require_once 'test.php';
 
 
 ?>

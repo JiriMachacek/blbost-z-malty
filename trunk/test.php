@@ -5,16 +5,7 @@
  * @author jmachacek
  */
 
-require_once 'main.php';
-require_once 'config.php';
-require_once 'smarty/Smarty.class.php';
-require_once 'user.php';
-session_start();
-unset($_SESSION);
 
-$user = (isset($_SESSION['user'])) ? $_SESSION['user'] : 0;
-$us = user::getInstance();
-$us->setUserID($user);
 
 class test extends main{
     //put your code here
@@ -41,14 +32,7 @@ class test extends main{
 $x = new test;
 
 $x->test();
-//$x->x();
-echo $x->y();
 
-define('xxx', 'ahoj');
-
-
-
-echo xxx;
 
 
 
