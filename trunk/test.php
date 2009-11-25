@@ -14,12 +14,13 @@ class test extends main{
     parent::__construct();
     }
 
-    public function test()
+  
+      public function test()
     {
         $result = $this->db->dataSource('SELECT * FROM test');
         $result->applyLimit(10, 1); //strankovani
         
-        $this->template->xxx = $result->fetchAll();
+//        $this->template->xxx = $result->fetchAll();
         $this->template->xyx = 'x';
         $this->smarty('main');
     }
@@ -29,15 +30,13 @@ class test extends main{
     {
         $user = user::getInstance();
         var_dump($user->getUserID());
+
     }
 }
 
 $x = new test;
 
 $x->test();
-
-
-
 
 
 ?>
