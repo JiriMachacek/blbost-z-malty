@@ -30,8 +30,14 @@ abstract class main {
          */
     private function startDb()
     {
-        $this->db = new PDO('mysql:host='.SQL_host.';dbname='.SQL_dbname, SQL_username, SQL_password);
-        $this->db->query("SET CHARACTER SET utf8");
+        $this->db = new DibiConnection(array(
+                'driver'   => 'mysql',
+                'host'     => SQL_host,
+                'username' => SQL_username,
+                'password' => SQL_password,
+                'database' => SQL_dbname,
+                'profiler' => DEBUGING));
+        
     }
 
     protected function smarty($template)
@@ -42,7 +48,7 @@ abstract class main {
         $smarty->debugging = DEBUGING;
 
         $this->template->baseURI = baseURI;
-        
+        $this->template->tpl_content = $template;
         $this->loadAdverts();
 
         foreach ($this->template as $key => $variable)
@@ -50,7 +56,7 @@ abstract class main {
             $smarty->assign($key, $variable);
         }
 
-        $smarty->display($template.'.tpl');
+        $smarty->display('layout.tpl');
     }
 
     private function loadAdverts()

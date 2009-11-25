@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+
     <tr>
         <td width="46px"></td>
         <td class="DirectoryTitle">Directory</td>
