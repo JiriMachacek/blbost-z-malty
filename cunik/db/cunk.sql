@@ -14,39 +14,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `directory`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `directory` (
-  `id_directory` INT NOT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`id_directory`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `category`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `category` (
-  `id_category` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NOT NULL ,
-  `directory_id_directory` INT NOT NULL ,
-  PRIMARY KEY (`id_category`) ,
-  INDEX `fk_category_directory1` (`directory_id_directory` ASC) ,
-  CONSTRAINT `fk_category_directory1`
-    FOREIGN KEY (`directory_id_directory` )
-    REFERENCES `directory` (`id_directory` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `company`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `company` (
   `id_company` INT NOT NULL AUTO_INCREMENT ,
   `locality_id_locality` INT NOT NULL ,
-  `category_id_category` INT NOT NULL ,
   `name` VARCHAR(45) NULL ,
   `content` TEXT NULL ,
   `adress_adress` VARCHAR(45) NULL ,
@@ -76,16 +48,9 @@ CREATE  TABLE IF NOT EXISTS `company` (
   `user` ENUM('user','paying','admin') NULL ,
   PRIMARY KEY (`id_company`) ,
   INDEX `fk_company_locality` (`locality_id_locality` ASC) ,
-  INDEX `nick` () ,
-  INDEX `fk_company_category1` (`category_id_category` ASC) ,
   CONSTRAINT `fk_company_locality`
     FOREIGN KEY (`locality_id_locality` )
     REFERENCES `locality` (`id_locality` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_company_category1`
-    FOREIGN KEY (`category_id_category` )
-    REFERENCES `category` (`id_category` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -191,6 +156,33 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `directory`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `directory` (
+  `id_directory` INT NOT NULL ,
+  `name` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id_directory`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `category`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `category` (
+  `id_category` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(45) NOT NULL ,
+  `directory_id_directory` INT NOT NULL ,
+  PRIMARY KEY (`id_category`) ,
+  INDEX `fk_category_directory1` (`directory_id_directory` ASC) ,
+  CONSTRAINT `fk_category_directory1`
+    FOREIGN KEY (`directory_id_directory` )
+    REFERENCES `directory` (`id_directory` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `pages`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `pages` (
@@ -198,6 +190,28 @@ CREATE  TABLE IF NOT EXISTS `pages` (
   `text` TEXT NULL ,
   `name` VARCHAR(45) NULL ,
   PRIMARY KEY (`id_pages`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `company_has_category`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `company_has_category` (
+  `company_id_company` INT NOT NULL ,
+  `category_id_category` INT NOT NULL ,
+  PRIMARY KEY (`company_id_company`, `category_id_category`) ,
+  INDEX `fk_company_has_category_company1` (`company_id_company` ASC) ,
+  INDEX `fk_company_has_category_category1` (`category_id_category` ASC) ,
+  CONSTRAINT `fk_company_has_category_company1`
+    FOREIGN KEY (`company_id_company` )
+    REFERENCES `company` (`id_company` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_company_has_category_category1`
+    FOREIGN KEY (`category_id_category` )
+    REFERENCES `category` (`id_category` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
