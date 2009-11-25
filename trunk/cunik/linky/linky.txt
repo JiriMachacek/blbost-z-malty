@@ -1,5 +1,38 @@
-home                        /
-about us                    /page/about-us/
-packages                    /page/packages/
-sig in / register           /page/login/
-contact us                  /page/contact-us
+home                        	/
+about us                    	/page/about-us/
+packages                    	/page/packages/
+sig in / register           	/page/login/
+contact us                  	/page/contact-us/
+category-ships			/category/ships/
+
+more info about company		/company-name/
+edit info from home page	/company-name/edit/
+edit adress and contacts	/company-name/edit-contact/
+edit modules			/company-name/manage/
+
+fotogallery			/company-name/gallery/
+fotogallery add			/company-name/gallery/upload
+
+guestbook first 10 msgs		/company-name/guestbook/
+guestbook next 10. 20. 30. msgs	/company-name/guestbook/10 .. /20 .. /30
+guestbook edit			/company-name/guestbook/edit
+
+products			/company-name/products/
+products add			/company-name/products/add
+products edit-(product2)	/company-name/products/edit-2
+products remove-(product2)	/company-name/products/remove-2
+
+news				/company-name/news/
+news pøidat			/company-name/news/add
+news edit	 		/company-name/news/edit
+news edit news with id 2	/company-name/news/edit-2
+news delete news with id 2	/company-name/news/delete-2
+
+event				/company-name/events/
+event pøidat			/company-name/events/add
+event edit	 		/company-name/events/edit
+event edit news with id 2	/company-name/events/edit-2
+event delete news with id 2	/company-name/events/delete-2
+
+contact form			/company-name/contact/
+contact form edit		/company-name/contact/edit
