@@ -2,8 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Untitled Document</title>
+{if isset($robots)}
+<meta name="robots" content="noindex, nofollow">
+{/if}}
+<title>Malta business centre - {$title}</title>
 <link href="{$baseURI}css/maltabusinesscentre.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -21,10 +23,10 @@
                     <td valign="bottom" align="right">
 						<ul class="menu">
                         	<li class="menu"><a href="{$baseURI}">Home</a></li>
-                        	<li class="menu"><a href="{$baseURI}about-us/">About Us</a></li>
+                        	<li class="menu"><a href="{$baseURI}page/about-us/">About Us</a></li>
                             <li class="menu"><a href="{$baseURI}page/packages/">Packages</a></li>
                             <li class="menu"><a href="{$baseURI}page/login/">Sign In / Register</a></li>
-                            <li class="menu"><a href="{$baseURI}/page/contact-us/">Contact Us</a></li>
+                            <li class="menu"><a href="{$baseURI}page/contact-us/">Contact Us</a></li>
                         </ul>
 
                     </td>

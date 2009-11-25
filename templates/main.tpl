@@ -74,5 +74,3 @@
         <td width="46px"></td>
         <td><img src="images/MaltaBusinessCentre_05.png" alt="Malta Bussines Centre" width="954" height="20" /></td>
     </tr>
-
-{include file="footer.tpl"}
