@@ -13,6 +13,8 @@ define('SQL_username', 'root');
 define('SQL_password', '');
 define('SQL_host', 'localhost');
 define('SQL_dbname', 'malta');
-define('baseURI', 'http://localhost:8080/blbost-z-malty/');
-define('DEBUGING', true);
+
+define('baseURI', 'http://'.$_SERVER['HTTP_HOST'].'/blbost-z-malty/');
+
+define('DEBUGING', TRUE);
 ?>

@@ -16,9 +16,12 @@ class test extends main{
 
     public function test()
     {
-        $this->template->xxx = $this->db->query('SELECT * FROM test')->fetchAll();
+        $result = $this->db->dataSource('SELECT * FROM test');
+        $result->applyLimit(10, 1); //strankovani
+        
+        $this->template->xxx = $result->fetchAll();
         $this->template->xyx = 'x';
-        $this->smarty('index');
+        $this->smarty('main');
     }
 
 
