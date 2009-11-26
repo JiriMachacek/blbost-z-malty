@@ -61,16 +61,20 @@ abstract class main {
 
     private function loadAdverts()
     {
-        $this->template->advert['big']['img'] = 'xxxx';
-        $this->template->advert['big']['link'] = 'neco.xxx';
-        $this->template->advert['button1']['img'] = 'xxxx';
-        $this->template->advert['button1']['link'] = 'neco.xxx';
-        $this->template->advert['button2']['img'] = 'xxxx';
-        $this->template->advert['button2']['link'] = 'neco.xxx';
-        $this->template->advert['small1']['img'] = 'xxxx';
-        $this->template->advert['small1']['link'] = 'neco.xxx';
-        $this->template->advert['small2']['img'] = 'xxxx';
-        $this->template->advert['small2']['link'] = 'neco.xxx';
+        /**
+         * @todo přidat logiku
+         */
+
+        $this->template->tpl_advert['big']['img'] = 'xxxx';
+        $this->template->tpl_advert['big']['link'] = 'neco.xxx';
+        $this->template->tpl_advert['button1']['img'] = 'xxxx';
+        $this->template->tpl_advert['button1']['link'] = 'neco.xxx';
+        $this->template->tpl_advert['button2']['img'] = 'xxxx';
+        $this->template->tpl_advert['button2']['link'] = 'neco.xxx';
+        $this->template->tpl_advert['small1']['img'] = 'xxxx';
+        $this->template->tpl_advert['small1']['link'] = 'neco.xxx';
+        $this->template->tpl_advert['small2']['img'] = 'xxxx';
+        $this->template->tpl_advert['small2']['link'] = 'neco.xxx';
 
     }
 

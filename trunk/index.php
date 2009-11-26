@@ -22,14 +22,14 @@ $firephp->fb($_POST, 'post');
 
 $user = (isset($_SESSION['user'])) ? $_SESSION['user'] : 0;
 $us = user::getInstance();
-$us->setUserID($user);
+$us->setUserID(1);
 
 
 if(isset($_GET['page']))
 {
     $request = $_GET['page'];
     $sub = explode('/', $request);
-$firephp->fb($sub, 'xub');
+$firephp->fb($sub, 'sub');
     if($sub[0] == 'page')
     {
         require_once 'page.php';
@@ -46,6 +46,28 @@ $firephp->fb($sub, 'xub');
         {
             $page->show($sub[1]);
         }
+    }
+    else if($sub[0] == 'company')
+    {
+        require_once 'company.php';
+
+        if(!isset($sub[2]))
+        {
+            require_once 'companyHome.php';
+            $page = new companyHome($sub[1]);
+        }
+
+        $page->show();
+
+    }
+    else if($sub[0] == 'catetory')
+    {
+
+    }
+    else
+    {
+
+        header('location: '.baseURI);
     }
 }
 else
