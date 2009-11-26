@@ -47,12 +47,7 @@ CREATE  TABLE IF NOT EXISTS `company` (
   `contact` ENUM('no','yes') NULL ,
   `user` ENUM('user','paying','admin') NULL ,
   PRIMARY KEY (`id_company`) ,
-  INDEX `fk_company_locality` (`locality_id_locality` ASC) ,
-  CONSTRAINT `fk_company_locality`
-    FOREIGN KEY (`locality_id_locality` )
-    REFERENCES `locality` (`id_locality` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_company_locality` (`locality_id_locality` ASC) )
 ENGINE = InnoDB;
 
 
@@ -67,12 +62,7 @@ CREATE  TABLE IF NOT EXISTS `guestbook` (
   `comment` VARCHAR(45) NOT NULL ,
   `date` DATETIME NOT NULL ,
   PRIMARY KEY (`id_guestbook`) ,
-  INDEX `fk_guestbook_company1` (`company_id_company` ASC) ,
-  CONSTRAINT `fk_guestbook_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_guestbook_company1` (`company_id_company` ASC) )
 ENGINE = InnoDB;
 
 
@@ -88,12 +78,7 @@ CREATE  TABLE IF NOT EXISTS `gallery` (
   `x` INT NULL ,
   `y` INT NULL ,
   PRIMARY KEY (`id_gallery`) ,
-  INDEX `fk_gallery_company1` (`company_id_company` ASC) ,
-  CONSTRAINT `fk_gallery_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_gallery_company1` (`company_id_company` ASC) )
 ENGINE = InnoDB;
 
 
@@ -108,12 +93,7 @@ CREATE  TABLE IF NOT EXISTS `product` (
   `description` VARCHAR(45) NULL ,
   `price` FLOAT NOT NULL ,
   PRIMARY KEY (`id_product`) ,
-  INDEX `fk_product_company1` (`company_id_company` ASC) ,
-  CONSTRAINT `fk_product_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_product_company1` (`company_id_company` ASC) )
 ENGINE = InnoDB;
 
 
@@ -127,12 +107,7 @@ CREATE  TABLE IF NOT EXISTS `news` (
   `text` VARCHAR(45) NULL ,
   `date` DATETIME NULL ,
   PRIMARY KEY (`id_news`) ,
-  INDEX `fk_news_company1` (`company_id_company` ASC) ,
-  CONSTRAINT `fk_news_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_news_company1` (`company_id_company` ASC) )
 ENGINE = InnoDB;
 
 
@@ -146,12 +121,7 @@ CREATE  TABLE IF NOT EXISTS `events` (
   `text` VARCHAR(45) NULL ,
   `date` DATETIME NULL ,
   PRIMARY KEY (`id_events`) ,
-  INDEX `fk_news_company1` (`company_id_company` ASC) ,
-  CONSTRAINT `fk_news_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_news_company1` (`company_id_company` ASC) )
 ENGINE = InnoDB;
 
 
@@ -173,12 +143,7 @@ CREATE  TABLE IF NOT EXISTS `category` (
   `name` VARCHAR(45) NOT NULL ,
   `directory_id_directory` INT NOT NULL ,
   PRIMARY KEY (`id_category`) ,
-  INDEX `fk_category_directory1` (`directory_id_directory` ASC) ,
-  CONSTRAINT `fk_category_directory1`
-    FOREIGN KEY (`directory_id_directory` )
-    REFERENCES `directory` (`id_directory` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_category_directory1` (`directory_id_directory` ASC) )
 ENGINE = InnoDB;
 
 
@@ -201,17 +166,7 @@ CREATE  TABLE IF NOT EXISTS `company_has_category` (
   `category_id_category` INT NOT NULL ,
   PRIMARY KEY (`company_id_company`, `category_id_category`) ,
   INDEX `fk_company_has_category_company1` (`company_id_company` ASC) ,
-  INDEX `fk_company_has_category_category1` (`category_id_category` ASC) ,
-  CONSTRAINT `fk_company_has_category_company1`
-    FOREIGN KEY (`company_id_company` )
-    REFERENCES `company` (`id_company` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_company_has_category_category1`
-    FOREIGN KEY (`category_id_category` )
-    REFERENCES `category` (`id_category` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_company_has_category_category1` (`category_id_category` ASC) )
 ENGINE = InnoDB;
 
 
