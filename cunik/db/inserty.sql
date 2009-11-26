@@ -90,5 +90,58 @@ VALUES (
 '$id_company', 'id_category'
 );
 
+/*********************************************/
+UPDATY
+/*********************************************/
+kategorie
 
+UPDATE `malta`.`category` SET `name` = 'ko',
+`directory_id_directory` = '3' 
+WHERE `category`.`id_category` =1 LIMIT 1 ;
+/*********************************************/
+company 
+
+UPDATE `malta`.`company_has_category` SET `company_id_company` = '1',
+`category_id_category` = '2' 
+WHERE `company_has_category`.`company_id_company` =2 
+AND `company_has_category`.`category_id_category` =3 LIMIT 1 ;
+/*********************************************/
+directory
+
+UPDATE `malta`.`directory` SET `name` = 'gfhfdhf' 
+WHERE `directory`.`id_directory` =1 LIMIT 1 ;
+/*********************************************/
+event
+
+UPDATE `malta`.`events` SET 
+`title` = 'titttle',
+`text` = 'texttt',
+`date` = '0022-00-00 00:00:00' 
+WHERE `events`.`id_events` =1 LIMIT 1 ;
+/*********************************************/
+fotka
+
+UPDATE `malta`.`gallery` SET `title` = 'titlee',
+`position` = '1' WHERE `gallery`.`id_gallery` =1 LIMIT 1 ;
+/*********************************************/
+guestbook nemá update
+/*********************************************/
+lokality taky nemají update
+/*********************************************/
+news 
+
+UPDATE `malta`.`news` SET `title` = 'titleee',
+`text` = 'texttt' WHERE `news`.`id_news` =2 LIMIT 1 ;
+/*********************************************/
+pages
+
+UPDATE `malta`.`pages` SET `text` = 'texttttttt' WHERE `pages`.`name` = 'jmeno' LIMIT 1 ;
+/*********************************************/
+products 
+
+UPDATE `malta`.`product` SET `name` = 'namee',
+`image` = 'imagee',
+`description` = 'descriptionn',
+`price` = '23' WHERE `product`.`id_product` =1 LIMIT 1 ;
+/*********************************************/
 
