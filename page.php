@@ -55,6 +55,9 @@ class page extends main
 
         if ($page == 'contact-us')
         {
+            /**
+             * @todo validace + captcha
+             */
             if($post['name'] == '')
             {
                 $error = false;

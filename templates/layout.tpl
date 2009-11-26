@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 {if isset($robots)}
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow" />
 {/if}}
 <title>Malta business centre - {$title}</title>
 <link href="{$baseURI}css/maltabusinesscentre.css" rel="stylesheet" type="text/css" />
@@ -93,7 +93,7 @@
         <td align="center">
         	<table cellpadding="0px" cellspacing="4px" border="0px" >
             	<tr>
-                	<td height="60px" width="468" bgcolor="#CCCCCC">{$advert.small1.link}</td>
+                	<td height="60px" width="468" bgcolor="#CCCCCC">{$tpl_advert.small1.link}</td>
                     <td height="60px" width="468" bgcolor="#CCCCCC"> advertise here</td>
                 </tr>
         	</table>
