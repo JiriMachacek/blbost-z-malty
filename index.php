@@ -50,13 +50,44 @@ $firephp->fb($sub, 'sub');
     else if($sub[0] == 'company')
     {
         require_once 'company.php';
+        $company = $sub[1];
 
         if(!isset($sub[2]))
         {
             require_once 'companyHome.php';
-            $page = new companyHome($sub[1]);
+            $page = new companyHome();
         }
+        else
+        {
+            $modul = 'company'.ucwords($sub[2]);
+            if(is_file($modul.'.php'))
+            {
+                require_once $modul.'.php';
+                $page = new $modul;
+            }
+            else
+            {
+                header('location: '.baseURI.'company/'.$company.'/');
+            }
 
+
+        }
+        $page->loadData($company);
+
+        if (isset($sub[3]))
+        {
+            if($sub[3] == 'edit')
+            {
+                if(isset($_POST['send']))
+                {
+                    $page->send($_POST);
+                }
+                else
+                {
+                    $page->edit();
+                }
+            }
+        }
         $page->show();
 
     }

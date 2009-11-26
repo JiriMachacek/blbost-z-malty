@@ -17,16 +17,9 @@ abstract class company extends main
     protected $companyInfo;
     protected $companyName;
 
-    public function __construct($name)
+    public function loadData($name)
     {
-        parent::__construct();
         $this->companyName = $name;
-        $this->loadData();
-    }
-
-    private function loadData()
-    {
-
         $sql = "SELECT
                     `id_company` ,
                     `url` ,
@@ -59,7 +52,6 @@ abstract class company extends main
                 FROM
                     company
                 ";
-                echo $sql;
 
         /**
          * @fix where
