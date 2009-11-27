@@ -4,9 +4,9 @@
  *
  * @author LukasJanda
  */
-class category extends main
+class directories extends main
 {
-    public function vykresli()
+    public function render()
     {
         $result = $this->db->dataSource('SELECT * FROM directory');
         $this->template->directory = $result->fetchAll();

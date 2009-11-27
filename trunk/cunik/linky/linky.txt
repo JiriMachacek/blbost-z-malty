@@ -23,13 +23,13 @@ products edit-(product2)	/company-name/products/edit-2
 products remove-(product2)	/company-name/products/remove-2
 
 news				/company-name/news/
-news pøidat			/company-name/news/add
+news pï¿½idat			/company-name/news/add
 news edit	 		/company-name/news/edit
 news edit news with id 2	/company-name/news/edit-2
 news delete news with id 2	/company-name/news/delete-2
 
 event				/company-name/events/
-event pøidat			/company-name/events/add
+event pï¿½idat			/company-name/events/add
 event edit	 		/company-name/events/edit
 event edit news with id 2	/company-name/events/edit-2
 event delete news with id 2	/company-name/events/delete-2

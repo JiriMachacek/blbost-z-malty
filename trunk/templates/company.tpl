@@ -28,7 +28,11 @@
                 	<td valign="top" width="242px">
                     	<table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr><td>
-                    	<img src="{$baseURI}images/companies/1301.jpg" alt="Company Name" width="242" height="190" />
+                        {if  isset($formEditImage)}
+                        {$editImage}
+                        {else}
+                    	<img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="Company Name" width="242" height="190" />
+                        {/if}
                         </td></tr>
 
               <tr>

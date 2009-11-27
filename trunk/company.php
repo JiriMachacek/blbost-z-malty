@@ -51,6 +51,7 @@ abstract class company extends main
                     `user`
                 FROM
                     company
+                WHERE company.url='$name'
                 ";
 
         /**
@@ -83,6 +84,18 @@ abstract class company extends main
         parent::smarty('company');
     }
 
+    public function companyImage($url)
+    {
+        $this->template->formEditImage = 'yes';
+        if(file_exists("images/companies/".$url))
+        {
+            $this->template->editImage = "<img src=\"".baseURI."images/companies/$url.jpg\" alt=\"Company Name\" width=\"242\" height=\"190\" />";
+        }
+        else
+        {
+            $this->template->editImage = 'formular/';
+        }
+    }
 
 }
 ?>
