@@ -25,7 +25,13 @@
                         	<li class="menu"><a href="{$baseURI}">Home</a></li>
                         	<li class="menu"><a href="{$baseURI}page/about-us/">About Us</a></li>
                             <li class="menu"><a href="{$baseURI}page/packages/">Packages</a></li>
-                            <li class="menu"><a href="{$baseURI}page/login/">Sign In / Register</a></li>
+                            
+                                {if $tpl_login}}
+                                    <li class="menu"><a href="{$baseURI}page/logout/">Log out</a></li>
+                                {else}
+                                    <li class="menu"><a href="{$baseURI}page/login/">Sign In / Register</a></li>
+                                {/if}
+                            
                             <li class="menu"><a href="{$baseURI}page/contact-us/">Contact Us</a></li>
                         </ul>
 

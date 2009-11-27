@@ -13,6 +13,7 @@ class page extends main
 {
     //put your code here
     private $error = '';
+    private $companyURL = '';
 
     public function show($page)
     {
@@ -20,6 +21,11 @@ class page extends main
         {
             $result = $this->db->query("SELECT text FROM pages WHERE name='$page' ")->fetch();
             $this->template->text = $result->text;
+        }
+        else if ($page == 'logout')
+        {
+            unset ($_SESSION['user']);
+            header('location: '.baseURI);
         }
         $this->template->title = str_replace('-', ' ', $page);
         $this->smarty($page);
@@ -35,54 +41,146 @@ class page extends main
 
     public function send($page, $post)
     {
-        if($this->valid($page, $post))
+        if($page == 'contact-us')
         {
-            header('location: '.baseURI.'page/'.$page.'/ok/');
+            if ($this->validContact($post))
+            {
+                header('location: '.baseURI.'page/'.$page.'/ok/');
+            }
+        }
+        else if($page == 'login')
+        {
+            if ($post['send'] == 'login')
+            {
+                if ($this->validLogin($post))
+                {
+                    header('location: '.baseURI.'company/'.$this->companyURL.'/');
+                }
+            }
+            else
+            {
+                if ($this->validRegister($post))
+                {
+                    /**
+                     * @todo přesměrování
+                     */
+                    header('location: '.baseURI.'/');
+                }
+            }
+        }
+
+        $this->template = (object) $post;
+        $this->template->robots = true;
+        $this->template->error = $this->error;
+        $this->template->title = str_replace('-', ' ', $page);
+        $this->smarty($page);
+        
+    }
+
+    private function validLogin($post)
+    {
+        /**
+         * @todo validace + captcha
+         */
+         $nick = $post['logname'];
+         $password = $post['logpassword'];
+
+         $sql = "SELECT id_company, url FROM company WHERE nick='$nick' AND password='$password'";
+         $result = $this->db->dataSource($sql);
+
+         if($result->count() == 1)
+         {
+             $data = $result->fetch();
+             $_SESSION['user'] = $data->id_company;
+             $this->companyURL = $data->url;
+             return true;
+         }
+
+         $this->error = 'Incorrect User Name/Password Combination';
+         return false;
+    }
+
+    private function validRegister($post)
+    {
+        /**
+         * @todo validace + captcha
+         */
+
+        $name = $post['name'];
+        $email = $post['email'];
+
+        if($name == '')
+        {
+            $this->error .= 'Insert name <br />';
+        }
+
+        if($email == '')
+        {
+            $this->error .= 'Insert email <br />';
+        }
+
+        if($post['password'] == '')
+        {
+            $this->error .= 'Insert password <br />';
+        }
+
+        if($post['verifypassword'] == '')
+        {
+            $this->error .= 'Insert verify password <br />';
+        }
+
+        if($post['verifypassword'] <> $post['password'])
+        {
+            $this->error .= 'Passwords are not same <br />';
+        }
+
+        if ($this->error <> '')
+            return false;
+
+        $sql = "SELECT nick, reg_email FROM company WHERE nick = '$name' OR reg_email = '$email'";
+
+        $result = $this->db->dataSource($sql);
+
+        if($result->count() == 1)
+        {
+            $this->error .= 'Someone is using this User Name or Email <br />';
+            return false;
         }
         else
         {
-            $this->template = (object) $post;
-            $this->template->robots = true;
-            $this->template->error = $this->error;
-            $this->template->title = str_replace('-', ' ', $page);
-            $this->smarty($page);
+            $sql = "INSERT INTO company (nick, password, reg_email) VALUES ('$name', '".$post['password']."', '$email')";
+            echo $sql;
+            $this->db->query($sql);
+            return true;
         }
     }
-
-    private function valid($page, $post)
+    
+    private function validContact($post)
     {
-        $error = true;
-
-        if ($page == 'contact-us')
+        /**
+         * @todo validace + captcha
+         */
+        if($post['name'] == '')
         {
-            /**
-             * @todo validace + captcha
-             */
-            if($post['name'] == '')
-            {
-                $error = false;
-                $this->error .= 'Insert name <br />';
-            }
-
-            if($post['email'] == '')
-            {
-                $error = false;
-                $this->error .= 'Insert email <br />';
-            }
-
-            if($post['subject'] == '')
-            {
-                $error = false;
-                $this->error .= 'Insert subject <br />';
-            }
-
-            if($post['message'] == '')
-            {
-                $error = false;
-                $this->error .= 'Insert message <br />';
-            }
+            $this->error .= 'Insert name <br />';
         }
-        return $error;
+
+        if($post['email'] == '')
+        {
+            $this->error .= 'Insert email <br />';
+        }
+
+        if($post['subject'] == '')
+        {
+            $this->error .= 'Insert subject <br />';
+        }
+
+        if($post['message'] == '')
+        {
+            $this->error .= 'Insert message <br />';
+        }
+        
+        return ($this->error <> '')? true : false;
     }
 }
 ?>

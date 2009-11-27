@@ -1,53 +1,80 @@
-   <tr>
+    <tr>
+        <td width="46px"></td>
+        <td class="DirectoryTitle">Sign In / Register</td>
+    </tr>
+    <tr>
         <td width="46px"></td>
         <td valign="top" class="DirectoryText">
-        	<table width="100%">
+        	{if isset($error)}<div class="error">{$error}</div>{/if}
+                <table width="100%">
             	<tr>
-   	  				<td valign="top" width="30%">
-                    	<p>maltabusinesscentre.com<br />
-                        EXOR Group Ltd,<br />
-                        'Serenity',<br />
-                        Triq Tal-Qattus,<br />
-                        Birkirkara, BKR 4402,<br />
-                        Malta.<br />
-                        <br />
-                        T: +356 2144 9732 / +356 9982 9840<br />
-                        E: info@maltabusinesscentre.com
-                        <br />
-                        </p>
+   	  				<td valign="top" width="50%">
+                    	<h2>Already Registered</h2>
+                    	<form id="form2" name="form2" method="post" action="">
+                    	  <table>
+                    	    <tr>
+                    	      <td><strong>User Name:</strong></td>
+                    	      <td><input name="logname" value="{if isset($logname)}{$logname}{/if}" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td><strong>Password:</strong></td>
+                    	      <td><input name="logpassword" type="password" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td>captcha</td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td><div class="myButton2">
+                    	        <input type="submit" name="send" value="login" />
+                  	        </div>
+                    	        <div class="myButton2">
+                    	          <input type="reset" name="input" value="cancel" />
+                  	          </div></td>
+                  	      </tr>
+                  	    </table>
+                  	  </form>
                     </td>
                 	<td valign="top">
-                    	<form id="form2" name="form2" method="post" action="">
-                        	<table>
-                            	<tr>
-                                	<td><strong>Name:</strong></td>
-                               	  <td><input name="name" type="text" size="50" /></td>
-                                </tr>
-                            	<tr>
-                                	<td><strong>E-Mail:</strong></td>
-                                	<td><input name="email" type="text" size="50" /></td>
-                                </tr>
-                            	<tr>
-                                	<td><strong>Subject:</strong></td>
-                                	<td><input name="subject" type="text" size="50" /></td>
-                                </tr>
-                            	<tr>
-                                	<td valign="top"><strong>Message:</strong></td>
-                               	  	<td><textarea name="message" cols="50" rows="8"></textarea></td>
-                              </tr>
-                            	<tr>
-                                	<td></td>
-                                	<td>captcha</td>
-                                </tr>
-                            	<tr>
-                                	<td></td>
-                                	<td>
-                                    	<div class="myButton2"><INPUT type="submit" name="" value="submit"></div>
-                                        <div class="myButton2"><INPUT type="reset" name="" value="reset"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+                   	  <h2>New Registration</h2>
+                      <form id="form3" name="form3" method="post" action="">
+                    	  <table>
+                    	    <tr>
+                    	      <td><strong>User Name:</strong></td>
+                    	      <td><input name="name" value="{if isset($name)}{$name}{/if}" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td><strong>E-Mail:</strong></td>
+                    	      <td><input name="email" value="{if isset($email)}{$email}{/if}" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td><strong>Password:</strong></td>
+                    	      <td><input name="password" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td><strong>Verify Password:</strong></td>
+                    	      <td><input name="verifypassword" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td>&nbsp;</td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td>captcha</td>
+                  	      </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td><div class="myButton2">
+                    	        <input type="submit" name="send" value="register" />
+                  	        </div>
+                    	        <div class="myButton2">
+                    	          <input type="reset" name="input" value="cancel" />
+                  	          </div></td>
+                  	      </tr>
+                  	    </table>
+                  	  </form>
                     </td>
                 </tr>
             </table>
