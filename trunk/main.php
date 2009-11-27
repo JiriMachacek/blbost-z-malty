@@ -42,6 +42,9 @@ abstract class main {
 
     protected function smarty($template)
     {
+        $us = user::getInstance();
+        $this->template->tpl_login = $us->isLogged();
+
         $smarty = new Smarty;
 
         $smarty->compile_check = true;

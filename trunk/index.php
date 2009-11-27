@@ -5,7 +5,7 @@
  * @author jmachacek
  */
 session_start();
-
+//$_SESSION['user'] = 5;
 require_once 'main.php';
 require_once 'config.php';
 require_once 'smarty/Smarty.class.php';
@@ -18,11 +18,12 @@ $firephp = FirePHP::getInstance(true);
 
 $firephp->fb($_GET, 'get');
 $firephp->fb($_POST, 'post');
+$firephp->fb($_SESSION, 'session');
 
 
 $user = (isset($_SESSION['user'])) ? $_SESSION['user'] : 0;
 $us = user::getInstance();
-$us->setUserID(1);
+$us->setUserID($user);
 
 
 if(isset($_GET['page']))

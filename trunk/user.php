@@ -43,5 +43,10 @@ class user {
     {
         return ($this->userID <> 0) ? $this->userID : false;
     }
+
+    public function isLogged()
+    {
+        return ($this->userID <> 0) ? true : false;
+    }
 }
 ?>
