@@ -24,7 +24,7 @@ class companyHome extends company
 
     private function loadContent()
     {
-        $result = $this->db->query("SELECT content FROM company WHERE id_company = '$this->companyID'")->fetch();
+        $result = $this->db->query("SELECT content, url  FROM company WHERE id_company = '$this->companyID'")->fetch();
         $this->template->summary = $result->content;
     }
 

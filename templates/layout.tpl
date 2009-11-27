@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 {if isset($robots)}
 <meta name="robots" content="noindex, nofollow" />
-{/if}}
+{/if}
 <title>Malta business centre - {$title}</title>
 <link href="{$baseURI}css/maltabusinesscentre.css" rel="stylesheet" type="text/css" />
 </head>

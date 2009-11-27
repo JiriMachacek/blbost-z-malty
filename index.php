@@ -30,7 +30,7 @@ if(isset($_GET['page']))
 {
     $request = $_GET['page'];
     $sub = explode('/', $request);
-$firephp->fb($sub, 'sub');
+    $firephp->fb($sub, 'sub');
     if($sub[0] == 'page')
     {
         require_once 'page.php';
@@ -57,6 +57,7 @@ $firephp->fb($sub, 'sub');
         {
             require_once 'companyHome.php';
             $page = new companyHome();
+            $page->companyImage($sub[1]);
         }
         else
         {
@@ -92,9 +93,11 @@ $firephp->fb($sub, 'sub');
         $page->show();
 
     }
-    else if($sub[0] == 'catetory')
+    else if($sub[0] == 'category')
     {
-
+    require_once 'category.php';
+    $category = new category();
+    $category->render($sub[1]);
     }
     else
     {
@@ -105,8 +108,8 @@ $firephp->fb($sub, 'sub');
 else
 {
     require_once 'directory.php';
-    $directory = new category();
-    $directory->vykresli();
+    $directory = new directories();
+    $directory->render();
 }
 
 ?>
