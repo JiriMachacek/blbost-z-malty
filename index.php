@@ -103,7 +103,9 @@ $firephp->fb($sub, 'sub');
 }
 else
 {
-    require_once 'test.php';
+    require_once 'directory.php';
+    $directory = new category();
+    $directory->vykresli();
 }
 
 ?>
