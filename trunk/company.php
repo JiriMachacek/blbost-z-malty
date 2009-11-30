@@ -68,6 +68,14 @@ abstract class company extends main
 
             $this->edit = ($user->getUserID() == $this->companyID)? true : false;
 
+             if(file_exists("images/companies/".$this->companyInfo->url.".jpg")) // does the image exist?
+                {
+                    $this->template->formEditImage = 'yes';
+                }
+                else
+                {
+                    $this->template->formEditImage = 'no';
+                }
         }
         else
         {
@@ -83,19 +91,5 @@ abstract class company extends main
         $this->template->tpl_edit = $this->edit;
         parent::smarty('company');
     }
-
-    public function companyImage($url)
-    {
-        $this->template->formEditImage = 'yes';
-        if(file_exists("images/companies/".$url))
-        {
-            $this->template->editImage = "<img src=\"".baseURI."images/companies/$url.jpg\" alt=\"Company Name\" width=\"242\" height=\"190\" />";
-        }
-        else
-        {
-            $this->template->editImage = 'formular/';
-        }
-    }
-
 }
 ?>
