@@ -41,5 +41,58 @@ class companyHome extends company
         }
         
     }
+
+
+    public function deleteImage($url)
+    {
+        if($this->edit)
+        {
+            $del = unlink("images/companies/".$url.".jpg");
+        }
+    }
+
+    public function uploadImage($company)
+    {
+        if($this->edit && $company = $_POST['send'])
+        {
+            $backup_name = ($_FILES["backup"]["name"]);
+            $backup = ($_FILES["backup"]["tmp_name"]);
+            $backup_type = ($_FILES["backup"]["type"]);
+
+            $height = 190;
+            $width = 242;
+
+            if ($backup_type=="image/pjpeg" | $backup_type=="image/jpeg")
+            {
+            $ext = ".jpg";
+            }
+          else
+          {
+          echo "Soubor nevyhovuje";
+          }
+        $URL=$company.$ext;
+            Copy($backup,"images/companies/_$URL");
+
+
+         $size=GetImageSize("images/companies/_$URL");
+
+         if ($width && ($size[0] < $size[1])){
+               $width = ($height / $size[1]) * $size[0];
+         }
+         else{
+               $height = ($width / $size[0]) * $size[1];
+         }
+
+
+         $thumb = ImageCreateTrueColor($width,$height);
+         $pic = ImageCreateFromJpeg("images/companies/_$URL");
+
+         imagecopyResampled ($thumb, $pic, 0, 0, 0, 0, $width, $height, $size[0], $size[1]);
+         imagejpeg($thumb, "images/companies/".$URL, 70);
+
+         unlink("images/companies/_".$URL);
+
+    }
+  }
 }
 ?>

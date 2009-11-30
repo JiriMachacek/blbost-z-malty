@@ -57,7 +57,6 @@ if(isset($_GET['page']))
         {
             require_once 'companyHome.php';
             $page = new companyHome();
-            $page->companyImage($sub[1]);
         }
         else
         {
@@ -69,7 +68,7 @@ if(isset($_GET['page']))
             }
             else
             {
-                header('location: '.baseURI.'company/'.$company.'/');
+                
             }
 
 
@@ -88,6 +87,18 @@ if(isset($_GET['page']))
                 {
                     $page->edit();
                 }
+            }
+            else if($sub[3] == 'delete-image')
+            {
+                require_once 'companyHome.php';
+                $page->deleteImage($company);
+                header('location: '.baseURI.'company/'.$company.'/home/');
+            }
+            else if($sub[3] == 'upload-image')
+            {
+                require_once 'companyHome.php';
+                $page->uploadImage($company);
+                header('location: '.baseURI.'company/'.$company.'/home/edit/');
             }
         }
         $page->show();

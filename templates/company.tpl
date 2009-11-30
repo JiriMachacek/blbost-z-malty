@@ -28,13 +28,39 @@
                 	<td valign="top" width="242px">
                     	<table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr><td>
-                        {if  isset($formEditImage)}
-                        {$editImage}
-                        {else}
-                    	<img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="Company Name" width="242" height="190" />
-                        {/if}
+                {if $tpl_edit && isset($formEditImage)} <!-- user logged -->
+                    {if $formEditImage eq 'yes'} <!-- picture exists -->
+                        <img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="Company Name" /><br />
+                        <a href="{$baseURI}company/{$tpl_company.url}/home/delete-image/">Delete picture</a>
+                    {elseif $formEditImage eq 'no'} <!-- picture doesntt exists -->
+                        <form action="{$baseURI}company/{$tpl_company.url}/home/upload-image/" method="post" enctype="multipart/form-data">
+                            <table>
+                                <tr>
+                                    <td>Upload company picture:</td>
+                                </tr>
+                                <tr>
+                                    <td align="left"><input type="file" size="10" class="formular" name="backup" /></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <input type="hidden" name="send" class="formular" value="{$tpl_company.url}" />
+                                    <input type="submit" class="formular" name="odeslat" value="Upload" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    {/if}
+                {elseif !$tpl_edit && isset($formEditImage)} <!-- user not logged -->
+                    {if $formEditImage eq 'yes'} <!-- picture exists -->
+                        <img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="Company Name" />
+                    {elseif $formEditImage eq 'no'} <!-- picture doesntt exists -->
+                        <img src="{$baseURI}images/companies/default.jpg" alt="Company Name" />
+                    {/if}
+                {else}
+                        
+                        <img src="{$baseURI}images/companies/default.jpg" alt="Company Name" />
+                {/if}
                         </td></tr>
-
               <tr>
                                 <td valign="top"><strong>Address:</strong><br /> {$tpl_company.adress_adress}<br />{$tpl_company.adress_street}<br />{$tpl_company.adress_locality}, {$tpl_company.adress_post}<br /> {$tpl_company.adress_country} <br /><br />
 
@@ -85,6 +111,7 @@
                                         </tr>
                                     </table>
                                 </td>
+                                </tr>
                         </table>
                   </td>
                     <td valign="top">

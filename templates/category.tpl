@@ -16,7 +16,7 @@
         	<table cellpadding="0px" cellspacing="5px" border="0px" width="100%">
                 <tr>
                 	<td valign="top" width="242px">
-                    	<img src="images/companies/{$i.url}.jpg" alt="{$i.name}" width="242" height="190"/>
+                    	<img src="{$baseURI}images/companies/{$i.url}.jpg" alt="{$i.name}" />
                     </td>
                     <td valign="top">{$i.page}<br /><br />
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
