@@ -56,7 +56,7 @@ class page extends main
         {
             if ($this->validContact($post))
             {
-                if ($this->sendEmail($post))
+                $this->sendEmail($post);
                 $this->deletePassword();
                 header('location: '.baseURI.'page/'.$page.'/ok/');
             }
@@ -183,9 +183,6 @@ class page extends main
     
     private function validContact($post)
     {
-        /**
-         * @todo validace
-         */
         if(!$this->checkPassword($post['kcaptcha'], $post['captcha']))
         {
              $this->error = 'You entered an incorrect code.';
