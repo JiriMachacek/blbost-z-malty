@@ -7,10 +7,7 @@
 session_start();
 //$_SESSION['user'] = 5;
 require_once 'main.php';
-require_once 'config.php';
-require_once 'smarty/Smarty.class.php';
 require_once 'user.php';
-require_once 'dibi/dibi.php';
 
 require('FirePHPCore/FirePHP.class.php');
 
@@ -88,7 +85,11 @@ if(isset($_GET['page']))
                     $page->edit();
                 }
             }
-            else if($sub[3] == 'delete-image')
+<<<<<<< .mine            else if($sub[3] == 'ok')
+            {
+                $page->showOK();
+            }
+=======            else if($sub[3] == 'delete-image')
             {
                 require_once 'companyHome.php';
                 $page->deleteImage($company);
@@ -100,15 +101,19 @@ if(isset($_GET['page']))
                 $page->uploadImage($company);
                 header('location: '.baseURI.'company/'.$company.'/home/edit/');
             }
+>>>>>>> .theirs        }
+        else if (isset($_POST['send']))
+        {
+            $page->send($_POST);
         }
-        $page->show();
+           $page->show();
 
     }
     else if($sub[0] == 'category')
     {
-    require_once 'category.php';
-    $category = new category();
-    $category->render($sub[1]);
+        require_once 'category.php';
+        $category = new category();
+        $category->render($sub[1]);
     }
     else
     {

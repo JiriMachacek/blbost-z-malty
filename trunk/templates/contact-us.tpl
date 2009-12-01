@@ -26,7 +26,7 @@
                         	<table>
                             	<tr>
                                 	<td><strong>Name:</strong></td>
-                               	  <td><input name="name" type="text" size="50" {if isset($name)}value="{$name}"{/if}/></td>
+                               	  <td><input name="name" type="text" size="50" {if isset($name)}value="{$name}"{/if} /></td>
                                 </tr>
                             	<tr>
                                 	<td><strong>E-Mail:</strong></td>
@@ -40,10 +40,17 @@
                                 	<td valign="top"><strong>Message:</strong></td>
                                	  	<td><textarea name="message" cols="50" rows="8">{if isset($message)}{$message}{/if}</textarea></td>
                               </tr>
-                            	<tr>
-                                	<td></td>
-                                	<td>captcha</td>
-                                </tr>
+                    	    <tr>
+                    	      <td></td>
+                    	      <td><img src="{$baseURI}captcha.php?id={$kcaptcha}" /></td>
+                            </tr>
+                            <tr>
+                    	      <td></td>
+                              <td>
+                              <input name="captcha" type="input" maxlength="5" value="{if isset($captcha)}{$captcha}{/if}" />
+                              <input type="hidden" name="kcaptcha" value="{$kcaptcha}" />
+                  	      </tr>
+
                             	<tr>
                                 	<td></td>
                                 	<td>
