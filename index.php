@@ -85,11 +85,11 @@ if(isset($_GET['page']))
                     $page->edit();
                 }
             }
-<<<<<<< .mine            else if($sub[3] == 'ok')
+            else if($sub[3] == 'ok')
             {
                 $page->showOK();
             }
-=======            else if($sub[3] == 'delete-image')
+                else if($sub[3] == 'delete-image')
             {
                 require_once 'companyHome.php';
                 $page->deleteImage($company);
@@ -101,7 +101,7 @@ if(isset($_GET['page']))
                 $page->uploadImage($company);
                 header('location: '.baseURI.'company/'.$company.'/home/edit/');
             }
->>>>>>> .theirs        }
+        }
         else if (isset($_POST['send']))
         {
             $page->send($_POST);
