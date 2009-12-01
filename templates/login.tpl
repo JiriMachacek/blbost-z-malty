@@ -22,7 +22,15 @@
                   	      </tr>
                     	    <tr>
                     	      <td></td>
-                    	      <td>captcha</td>
+                    	      <td><img src="{$baseURI}captcha.php?id={$logincaptcha}" /></td>
+                            </tr>
+                    	    <tr>
+                    	      <td></td>
+                              <td>
+                              <input name="captchalog" type="input" maxlength="5" value="{if isset($captchalog)}{$captchalog}{/if}" />
+                              <input type="hidden" name="logincaptcha" value="{$logincaptcha}" />
+                              <input type="hidden" name="registercaptcha" value="{$registercaptcha}" />
+                          </td>
                   	      </tr>
                     	    <tr>
                     	      <td></td>
@@ -58,13 +66,15 @@
                   	      </tr>
                     	    <tr>
                     	      <td></td>
-                    	      <td>&nbsp;</td>
-                  	      </tr>
+                    	      <td><img src="{$baseURI}captcha.php?id={$registercaptcha}" /></td>
+                            </tr>
                     	    <tr>
                     	      <td></td>
-                    	      <td>captcha</td>
+                              <td>
+                              <input name="captchareg" type="input" maxlength="5" value="{if isset($captchareg)}{$captchareg}{/if}" />
+                              <input type="hidden" name="registercaptcha" value="{$registercaptcha}" />
+                              <input type="hidden" name="logincaptcha" value="{$logincaptcha}" />                          </td>
                   	      </tr>
-                    	    <tr>
                     	      <td></td>
                     	      <td><div class="myButton2">
                     	        <input type="submit" name="send" value="register" />

@@ -27,7 +27,17 @@ class page extends main
             unset ($_SESSION['user']);
             header('location: '.baseURI);
         }
+        else if ($page == 'login')
+        {
+            $this->template->logincaptcha = $this->generatePassword();
+            $this->template->registercaptcha = $this->generatePassword();
+        }
+        else
+        {
+            $this->template->kcaptcha = $this->generatePassword();
+        }
         $this->template->title = str_replace('-', ' ', $page);
+        
         $this->smarty($page);
     }
 
@@ -35,6 +45,7 @@ class page extends main
     {
         $this->template->error = 'mail was send';
         $this->template->robots = true;
+        $this->template->kcaptcha = $this->generatePassword();
         $this->template->title = str_replace('-', ' ', $page);
         $this->smarty($page);
     }
@@ -45,6 +56,8 @@ class page extends main
         {
             if ($this->validContact($post))
             {
+                if ($this->sendEmail($post))
+                $this->deletePassword();
                 header('location: '.baseURI.'page/'.$page.'/ok/');
             }
         }
@@ -54,6 +67,7 @@ class page extends main
             {
                 if ($this->validLogin($post))
                 {
+                    $this->deletePassword();
                     header('location: '.baseURI.'company/'.$this->companyURL.'/');
                 }
             }
@@ -64,6 +78,7 @@ class page extends main
                     /**
                      * @todo přesměrování
                      */
+                    $this->deletePassword();
                     header('location: '.baseURI.'/');
                 }
             }
@@ -85,6 +100,12 @@ class page extends main
          $nick = $post['logname'];
          $password = $post['logpassword'];
 
+         if(!$this->checkPassword($post['logincaptcha'], $post['captchalog']))
+         {
+             $this->error = 'You entered an incorrect code.';
+             return false;
+         }
+
          $sql = "SELECT id_company, url FROM company WHERE nick='$nick' AND password='$password'";
          $result = $this->db->dataSource($sql);
 
@@ -105,6 +126,11 @@ class page extends main
         /**
          * @todo validace + captcha
          */
+         if(!$this->checkPassword($post['registercaptcha'], $post['captchareg']))
+         {
+             $this->error = 'You entered an incorrect code.';
+             return false;
+         }
 
         $name = $post['name'];
         $email = $post['email'];
@@ -158,14 +184,20 @@ class page extends main
     private function validContact($post)
     {
         /**
-         * @todo validace + captcha
+         * @todo validace
          */
+        if(!$this->checkPassword($post['kcaptcha'], $post['captcha']))
+        {
+             $this->error = 'You entered an incorrect code.';
+             return false;
+        }
+
         if($post['name'] == '')
         {
             $this->error .= 'Insert name <br />';
         }
 
-        if($post['email'] == '')
+        if(!ereg("^.+@.+\..+$",$post['email']))
         {
             $this->error .= 'Insert email <br />';
         }
@@ -179,8 +211,8 @@ class page extends main
         {
             $this->error .= 'Insert message <br />';
         }
-        
-        return ($this->error <> '')? true : false;
+
+        return ($this->error <> '') ? false : true;
     }
 }
 ?>

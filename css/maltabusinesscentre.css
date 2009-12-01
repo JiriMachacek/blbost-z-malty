@@ -225,4 +225,12 @@ hr.hr {
 	border:0px;
 	background-color:#E0E0E0;
 }
+
+.error{
+    border:red dotted;
+    font-weight:bold;
+    font-size:larger;
+    text-align:center;
+    color:red;
+}
 -->
