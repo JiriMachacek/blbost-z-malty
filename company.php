@@ -48,7 +48,8 @@ abstract class company extends main
                     `news` ,
                     `events` ,
                     `contact` ,
-                    `user`
+                    `user` ,
+                    `image`
                 FROM
                     company
                 WHERE company.url='$name'
@@ -90,6 +91,11 @@ abstract class company extends main
         $this->template->tpl_curl = 'company/'.$this->companyName;
         $this->template->tpl_edit = $this->edit;
         parent::smarty('company');
+    }
+
+    public function setImage($value)
+    {
+            $this->db->query("UPDATE company SET image = '".$value."' WHERE id_company = '".$this->companyID."'");
     }
 }
 ?>

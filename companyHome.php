@@ -48,6 +48,7 @@ class companyHome extends company
         if($this->edit)
         {
             $del = unlink("images/companies/".$url.".jpg");
+            $this->setImage("no");
         }
     }
 
@@ -91,6 +92,7 @@ class companyHome extends company
          imagejpeg($thumb, "images/companies/".$URL, 70);
 
          unlink("images/companies/_".$URL);
+         $this->setImage("yes");
 
     }
   }

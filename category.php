@@ -27,6 +27,7 @@ class category extends main
                                         company.page,
                                         company.url,
                                         company.id_company,
+                                        company.image,
                                         company.locality_id_locality
                                         FROM company, category, company_has_category AS chc
                                         WHERE category.id_category = chc.category_id_category
