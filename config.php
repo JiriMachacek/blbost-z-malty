@@ -23,4 +23,6 @@ define('captcha_length', 5);
 define('captcha_acceptedChars', 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789');
 
 define('DEBUGING', TRUE);
+
+define('MAX_PHOTOS', 5);
 ?>
