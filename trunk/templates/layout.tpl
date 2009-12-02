@@ -7,6 +7,10 @@
 {/if}
 <title>Malta business centre - {$title}</title>
 <link href="{$baseURI}css/maltabusinesscentre.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{$baseURI}css/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{$baseURI}js/prototype.js"></script>
+<script type="text/javascript" src="{$baseURI}js/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="{$baseURI}js/lightbox.js"></script>
 </head>
 
 <body>
