@@ -89,7 +89,7 @@ if(isset($_GET['page']))
             {
                 $page->showOK();
             }
-                else if($sub[3] == 'delete-image')
+            else if($sub[3] == 'delete-image')
             {
                 require_once 'companyHome.php';
                 $page->deleteImage($company);
