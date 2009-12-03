@@ -85,9 +85,15 @@ if(isset($_GET['page']))
                     $page->edit();
                 }
             }
-            else if($sub[3] == 'ok')
+            else if($sub[3] == 'gallery-upload-image')
             {
-                $page->showOK();
+                $page->uploadImage($company);
+                header('location: '.baseURI.'company/'.$company.'/gallery/edit/');
+            }
+            else if($sub[3] == 'gallery-delete-image')
+            {
+                $page->galleryDeleteImage($sub[4],$sub[5]);
+                header('location: '.baseURI.'company/'.$company.'/gallery/edit/');
             }
             else if($sub[3] == 'delete-image')
             {
