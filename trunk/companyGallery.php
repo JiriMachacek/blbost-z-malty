@@ -7,7 +7,7 @@
 
 class companyGallery extends company
 {
-    public function show($company)
+    public function show()
     {
         $result = $this->db->query("select gallery.id_gallery as id_gallery,
                                     gallery.x as x,
@@ -15,13 +15,13 @@ class companyGallery extends company
                                     gallery.file as file,
                                     gallery.position as position
                                     from gallery, company
-                                    where company.url='$company'
-                                    order by gallery.position ASC")->fetchAll();
+                                    where company.url=%s
+                                    order by gallery.position ASC", $this->companyName)->fetchAll();
         $this->template->gallery = $result;
         $this->smarty('gallery');
     }
 
-    public function edit($company)
+    public function edit()
     {
         $result = $this->db->query("select gallery.id_gallery as id_gallery,
                                     gallery.x as x,
@@ -29,8 +29,8 @@ class companyGallery extends company
                                     gallery.file as file,
                                     gallery.position as position
                                     from gallery, company
-                                    where company.url='$company'
-                                    order by gallery.position ASC")->fetchAll();
+                                    where company.url=%s
+                                    order by gallery.position ASC", $this->companyName)->fetchAll();
         $this->template->gallery = $result;
         $this->smarty('galleryEdit');
     }
