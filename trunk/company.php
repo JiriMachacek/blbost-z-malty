@@ -16,10 +16,12 @@ abstract class company extends main
     protected $companyID;
     protected $companyInfo;
     protected $companyName;
+    protected $modul;
 
-    public function loadData($name)
+    public function loadData($name, $modul)
     {
         $this->companyName = $name;
+        $this->modul = $modul;
         $sql = "SELECT
                     `id_company` ,
                     `url` ,
@@ -87,6 +89,7 @@ abstract class company extends main
     protected function smarty($template)
     {
         $this->template->tpl_subpage = $template;
+        $this->template->tpl_modul = $this->modul;
         $this->template->tpl_company = $this->companyInfo;
         $this->template->tpl_curl = 'company/'.$this->companyName;
         $this->template->tpl_edit = $this->edit;

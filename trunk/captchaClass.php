@@ -13,7 +13,8 @@ class captcha extends main
     private function createCaptcha($id)
     {
         $password = strtoupper($this->db->query('SELECT password FROM captcha WHERE ID_captcha=%i ', $id)->fetchSingle());
-        
+        if ($password == '')
+            $password = 'Error';
         $cnum = str_split($password);
 
         $stringlength = count($cnum);
