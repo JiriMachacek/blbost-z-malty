@@ -85,6 +85,10 @@ if(isset($_GET['page']))
                     $page->edit();
                 }
             }
+            else if($sub[3] == 'ok')
+            {
+                $page->showOK();
+            }
             else if($sub[3] == 'gallery-upload-image')
             {
                 $page->uploadImage($company);
