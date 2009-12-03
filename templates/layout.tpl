@@ -11,6 +11,13 @@
 <script type="text/javascript" src="{$baseURI}js/prototype.js"></script>
 <script type="text/javascript" src="{$baseURI}js/scriptaculous.js?load=effects"></script>
 <script type="text/javascript" src="{$baseURI}js/lightbox.js"></script>
+
+<script type="text/javascript">
+var fileLoadingImage = "{$baseURI}/images/loading.gif";
+var fileBottomNavCloseImage = "{$baseURI}/images/closelabel.gif";
+
+</script>
+
 </head>
 
 <body>

@@ -64,8 +64,6 @@
 //
 //	Configuration
 //
-var fileLoadingImage = "images/loading.gif";
-var fileBottomNavCloseImage = "images/closelabel.gif";
 
 var animate = true;	// toggles resizing animations
 var resizeSpeed = 7;	// controls the speed of the image resizing animations (1=slowest and 10=fastest)
