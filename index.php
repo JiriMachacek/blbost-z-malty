@@ -54,10 +54,12 @@ if(isset($_GET['page']))
         {
             require_once 'companyHome.php';
             $page = new companyHome();
+            $subpage = 'home';
         }
         else
         {
-            $modul = 'company'.ucwords($sub[2]);
+            $subpage = ucwords($sub[2]);
+            $modul = 'company'.$subpage;
             if(is_file($modul.'.php'))
             {
                 require_once $modul.'.php';
@@ -65,12 +67,12 @@ if(isset($_GET['page']))
             }
             else
             {
-                
+                header('location: '.baseURI.'error/modul/'.$subpage.'/');
             }
 
 
         }
-        $page->loadData($company);
+        $page->loadData($company, $subpage);
 
         if (isset($sub[3]))
         {
@@ -79,6 +81,10 @@ if(isset($_GET['page']))
                 if(isset($_POST['send']))
                 {
                     $page->send($_POST);
+                }
+                else if (isset ($sub[4]))
+                {
+                    $page->edit((int) $sub[4]);
                 }
                 else
                 {

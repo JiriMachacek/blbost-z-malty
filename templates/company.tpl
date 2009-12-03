@@ -17,7 +17,7 @@
                             {if $tpl_company.news == 'yes'}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/news/">news</a></li>{/if}
                             {if $tpl_company.events == 'yes'}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/events/">events</a></li>{/if}
                             {if $tpl_company.contact == 'yes'}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/contact/">contact</a></li>{/if}
-                            {if $tpl_edit}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/{$tpl_subpage}/edit/">edit page</a></li>{/if}
+                            {if $tpl_edit}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/{$tpl_modul|lower}/edit/">edit page</a></li>{/if}
                             {if $tpl_edit}<li class="editmenu" style="float:left; padding-right:3px"><a href="{$baseURI}{$tpl_curl}/manage/">manage</a></li>{/if}
                         </ul>
             		</td>
