@@ -95,6 +95,29 @@ if(isset($_GET['page']))
             {
                 $page->showOK();
             }
+            else if($sub[3] == 'add-product')
+            {
+                $page->productAdd();
+            }
+            else if($sub[3] == 'edit-product')
+            {
+                $page->productEdit($sub[4]);
+            }
+            else if($sub[3] == 'delete-product')
+            {
+                $page->productDelete($sub[4]);
+                header('location: '.baseURI.'company/'.$company.'/products/edit/');
+            }
+            else if($sub[3] == 'products-upload-image')
+            {
+                $page->productsUploadImage();
+                header('location: '.baseURI.'company/'.$company.'/products/edit/');
+            }
+            else if($sub[3] == 'products-delete-image')
+            {
+                $page->productsDeleteImage($sub[4],$sub[5]);
+                header('location: '.baseURI.'company/'.$company.'/products/edit-product/'.$sub[4].'/');
+            }
             else if($sub[3] == 'gallery-upload-image')
             {
                 $page->uploadImage($company);

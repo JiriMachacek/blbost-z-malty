@@ -80,7 +80,7 @@ class companyGallery extends company
                 }
               else
               {
-              echo "Soubor nevyhovuje";
+              echo "The image file is not the JPEG format.";
               }
 
                 $file = $company."_".$pocet;
