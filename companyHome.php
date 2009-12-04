@@ -69,7 +69,7 @@ class companyHome extends company
             }
           else
           {
-          echo "Soubor nevyhovuje";
+          echo "The image file is not the JPEG format.";
           }
         $URL=$company.$ext;
             Copy($backup,"images/companies/_$URL");
