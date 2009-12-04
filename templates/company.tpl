@@ -115,6 +115,7 @@
                         </table>
                   </td>
                     <td valign="top">
+                    {if isset($error)}<div class="error">{$error}</div>{/if}
                     {include file="$tpl_subpage.tpl"}
                     </td>
             	</tr>

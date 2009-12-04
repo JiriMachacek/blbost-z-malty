@@ -18,7 +18,6 @@ function counterUpdate(opt_countedTextBox, opt_countBody, opt_maxSize) {
 </script>
 {/literal}
 
-{if isset($error)}<div class="error">{$error}</div>{/if}
 <form id="form2" name="form2" method="post" action="">
                     	<table width="100%" cellpadding="0" cellspacing="0" border="0">
                         	<tr>

@@ -8,9 +8,12 @@
 <title>Malta business centre - {$title}</title>
 <link href="{$baseURI}css/maltabusinesscentre.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{$baseURI}css/lightbox.css" type="text/css" media="screen" />
+<link href="{$baseURI}css/datepicker.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="{$baseURI}js/prototype.js"></script>
 <script type="text/javascript" src="{$baseURI}js/scriptaculous.js?load=effects"></script>
 <script type="text/javascript" src="{$baseURI}js/lightbox.js"></script>
+<script type="text/javascript" src="{$baseURI}js/datepicker.js">{literal}{"describedby":"fd-dp-aria-describedby"}{/literal}</script>
 
 <script type="text/javascript">
 var fileLoadingImage = "{$baseURI}/images/loading.gif";

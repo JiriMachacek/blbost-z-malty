@@ -95,6 +95,10 @@ if(isset($_GET['page']))
             {
                 $page->showOK();
             }
+			else if($sub[3] == 'add')
+            {
+                $page->showForm();
+            }
             else if($sub[3] == 'add-product')
             {
                 $page->productAdd();
@@ -118,6 +122,7 @@ if(isset($_GET['page']))
                 $page->productsDeleteImage($sub[4],$sub[5]);
                 header('location: '.baseURI.'company/'.$company.'/products/edit-product/'.$sub[4].'/');
             }
+
             else if($sub[3] == 'gallery-upload-image')
             {
                 $page->uploadImage($company);
@@ -139,6 +144,10 @@ if(isset($_GET['page']))
                 require_once 'companyHome.php';
                 $page->uploadImage($company);
                 header('location: '.baseURI.'company/'.$company.'/home/edit/');
+            }
+            else if ($sub[3] == 'del' && isset($sub[4]))
+            {
+                $page->delete($sub[4]);
             }
         }
         else if (isset($_POST['send']))

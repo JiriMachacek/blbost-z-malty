@@ -22,6 +22,7 @@ abstract class main {
 
     private $captchaID;
 
+
     public function __construct()
     {
         $this->startDb();
@@ -47,24 +48,26 @@ abstract class main {
 
     protected function smarty($template)
     {
-        $us = user::getInstance();
-        $this->template->tpl_login = $us->isLogged();
+            $this->show = false;
+            $us = user::getInstance();
+            $this->template->tpl_login = $us->isLogged();
 
-        $smarty = new Smarty;
+            $smarty = new Smarty;
 
-        $smarty->compile_check = true;
-        $smarty->debugging = DEBUGING;
+            $smarty->compile_check = true;
+            $smarty->debugging = DEBUGING;
 
-        $this->template->baseURI = baseURI;
-        $this->template->tpl_content = $template;
-        $this->loadAdverts();
+            $this->template->baseURI = baseURI;
+            $this->template->tpl_content = $template;
+            $this->loadAdverts();
 
-        foreach ($this->template as $key => $variable)
-        {
-            $smarty->assign($key, $variable);
-        }
+            foreach ($this->template as $key => $variable)
+            {
+                $smarty->assign($key, $variable);
+            }
 
-        $smarty->display('layout.tpl');
+            $smarty->display('layout.tpl');
+            exit();
     }
 
     private function loadAdverts()
