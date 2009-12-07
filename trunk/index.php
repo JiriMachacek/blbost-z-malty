@@ -28,6 +28,7 @@ if(isset($_GET['page']))
     $request = $_GET['page'];
     $sub = explode('/', $request);
     $firephp->fb($sub, 'sub');
+
     if($sub[0] == 'page')
     {
         require_once 'page.php';
@@ -72,7 +73,7 @@ if(isset($_GET['page']))
 
 
         }
-        $page->loadData($company, $subpage);
+        $page->loadData($company, $subpage, $request);
 
         if (isset($sub[3]))
         {
@@ -95,7 +96,7 @@ if(isset($_GET['page']))
             {
                 $page->showOK();
             }
-			else if($sub[3] == 'add')
+            else if($sub[3] == 'add')
             {
                 $page->showForm();
             }

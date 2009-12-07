@@ -1,9 +1,9 @@
 {if $tpl_edit}
 <ul class="editmenu">
-                <li class="editmenu"><a href="{$baseURI}{$tpl_curl}/news/add/">add new news</a></li>
+                <li class="editmenu"><a href="{$baseURI}{$tpl_curl}/events/add/">add new evet</a></li>
             </ul>
 {/if}
-{foreach from=$news item=item}
+{foreach from=$events item=item}
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
                         	<tr>
                             	<td><strong>{$item.title}</strong></td>
@@ -17,13 +17,12 @@
                         </table>
                	    <hr class="hr"/>
 {foreachelse}
-No news found.
-
+No events found.
 {/foreach}
 
 
 {if $tpl_edit}
 <ul class="editmenu">
-                <li class="editmenu"><a href="{$baseURI}{$tpl_curl}/news/add/">add new news</a></li>
+                <li class="editmenu"><a href="{$baseURI}{$tpl_curl}/events/add/">add new event</a></li>
             </ul>
 {/if}

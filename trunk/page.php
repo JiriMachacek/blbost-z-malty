@@ -36,7 +36,8 @@ class page extends main
         {
             $this->template->kcaptcha = $this->generatePassword();
         }
-        $this->template->title = str_replace('-', ' ', $page);
+        $this->template->title = $this->createTitle(str_replace('-', ' ', $page));
+
         
         $this->smarty($page);
     }
@@ -46,7 +47,7 @@ class page extends main
         $this->template->error = 'mail was send';
         $this->template->robots = true;
         $this->template->kcaptcha = $this->generatePassword();
-        $this->template->title = str_replace('-', ' ', $page);
+        $this->template->title = $this->createTitle(str_replace('-', ' ', $page));
         $this->smarty($page);
     }
 
@@ -87,7 +88,7 @@ class page extends main
         $this->template = (object) $post;
         $this->template->robots = true;
         $this->template->error = $this->error;
-        $this->template->title = str_replace('-', ' ', $page);
+        $this->template->title = $this->createTitle(str_replace('-', ' ', $page));
         $this->smarty($page);
         
     }
