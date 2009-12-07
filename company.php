@@ -17,11 +17,13 @@ abstract class company extends main
     protected $companyInfo;
     protected $companyName;
     protected $modul;
+    protected $url;
 
-    public function loadData($name, $modul)
+    public function loadData($name, $modul, $url)
     {
         $this->companyName = $name;
         $this->modul = $modul;
+        $this->url = $url;
         $sql = "SELECT
                     `id_company` ,
                     `url` ,
@@ -93,8 +95,10 @@ abstract class company extends main
         $this->template->tpl_company = $this->companyInfo;
         $this->template->tpl_curl = 'company/'.$this->companyName;
         $this->template->tpl_edit = $this->edit;
+        $this->template->title = $this->createTitle($this->url);
         parent::smarty('company');
     }
+
 
     public function setImage($value)
     {

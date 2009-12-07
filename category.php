@@ -40,6 +40,9 @@ class category extends main
 
         //$result = $this->db->dataSource('SELECT * FROM category where category.name = "$cat"');
         //$this->template->category = $result->fetchAll();
+        
+        $this->template->title = $this->createTitle('Category '.$cat);
+
         $this->smarty("category");
     }
 

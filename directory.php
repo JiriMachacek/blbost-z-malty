@@ -13,6 +13,7 @@ class directories extends main
 
         $result = $this->db->dataSource('SELECT * FROM category');
         $this->template->category = $result->fetchAll();
+        $this->template->title = $this->createTitle('home');
         $this->smarty("directory");
     }
 
