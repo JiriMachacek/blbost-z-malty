@@ -8,9 +8,16 @@ class companyGuestbook extends company
     private $error;
     public function show()
     {
-        $this->loadGuestbook();
-        $this->template->kcaptcha = $this->generatePassword();
-        $this->smarty('companyGuestbook');
+        if($this->companyInfo->guestbook == 'yes')
+        {
+            $this->loadGuestbook();
+            $this->template->kcaptcha = $this->generatePassword();
+            $this->smarty('companyGuestbook');
+        }
+        else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/guestbook/');
+        }
     }
 
     public function send($post)

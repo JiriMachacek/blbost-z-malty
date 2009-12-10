@@ -8,8 +8,15 @@ class companyNews extends company
     private $error;
     public function show()
     {
-        $this->loadNews();
-        $this->smarty('companyNews');
+        if($this->companyInfo->news == 'yes')
+        {
+            $this->loadNews();
+            $this->smarty('companyNews');
+        }
+        else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/news/');
+        }
     }
 
     public function showForm()

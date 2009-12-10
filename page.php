@@ -99,7 +99,7 @@ class page extends main
          * @todo validace + captcha
          */
          $nick = $post['logname'];
-         $password = $post['logpassword'];
+         $password = sha1($post['logpassword']);
 
          if(!$this->checkPassword($post['logincaptcha'], $post['captchalog']))
          {
