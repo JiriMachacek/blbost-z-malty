@@ -8,8 +8,16 @@ class companyEvents extends company
     private $error;
     public function show()
     {
-        $this->loadEvents();
-        $this->smarty('companyEvents');
+        if($this->companyInfo->events == 'yes')
+        {
+            $this->loadEvents();
+            $this->smarty('companyEvents');
+        }
+        else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/events/');
+        }
+
     }
 
     public function showForm()

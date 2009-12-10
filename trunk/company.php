@@ -59,9 +59,6 @@ abstract class company extends main
                 WHERE company.url='$name'
                 ";
 
-        /**
-         * @fix where
-         */
         $result = $this->db->dataSource($sql);
 
         if($result->count() == 1)

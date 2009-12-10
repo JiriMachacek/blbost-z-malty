@@ -9,14 +9,22 @@ class companyProducts extends company
 {
     public function show()
     { 
-        $result = $this->db->query("SELECT product.id_product AS id_product, product.price AS price, product.name AS name, product.description AS description, product.image AS image
-                                    FROM product, company
-                                    WHERE product.company_id_company = company.id_company
-                                    AND company.url = '$this->companyName'
-                                    ORDER BY product.name ASC")->fetchAll();
-        $this->template->products = $result;
-        $this->smarty('products');
-    }
+        if($this->companyInfo->products == 'yes')
+        {
+
+            $result = $this->db->query("SELECT product.id_product AS id_product, product.price AS price, product.name AS name, product.description AS description, product.image AS image
+                                        FROM product, company
+                                        WHERE product.company_id_company = company.id_company
+                                        AND company.url = '$this->companyName'
+                                        ORDER BY product.name ASC")->fetchAll();
+            $this->template->products = $result;
+            $this->smarty('products');
+        }
+         else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/products/');
+        }
+   }
     public function productAdd()
     {
         if(isSet($_POST["add"]))

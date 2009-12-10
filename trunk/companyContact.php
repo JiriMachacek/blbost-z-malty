@@ -11,8 +11,15 @@ class companyContact extends company
     
     public function show()
     {
-        $this->template->kcaptcha = $this->generatePassword();
-        $this->smarty('companyContact');
+        if($this->companyInfo->contact == 'yes')
+        {
+            $this->template->kcaptcha = $this->generatePassword();
+            $this->smarty('companyContact');
+        }
+        else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/contact/');
+        }
     }
 
     public function showOK()
