@@ -59,28 +59,33 @@ var fileBottomNavCloseImage = "{$baseURI}/images/closelabel.gif";
     <tr>
         <td width="46px"></td>
         <td style="background: url('{$baseURI}images/MaltaBusinessCentre_04.jpg')" height="142px" valign="middle" align="center">
-            <form id="form1" name="form1" method="post" action="">
+            <form name="cse" id="searchbox_demo" action="http://www.google.com/cse">
                 <table>
                     <tr>
                     <td align="right">
                        	  <div>
                                 <div class="SearchText" >
-                                    <input name="keyword" type="text" id="keyword" size="85" />
+  <input type="hidden" name="cref" value="" />
+  <input type="hidden" name="ie" value="utf-8" />
+  <input type="hidden" name="hl" value="" />
+  <input name="q" type="text" size="85" />
                                 </div>
-                                <div class="SearchOption" >
+                                <!--div class="SearchOption" >
                                     <input name="searchoption" type="radio" value="keyword" checked="checked" />keyword
                                     <input name="searchoption" type="radio" value="company" />company
-                                </div>
+                                </div-->
                           </div>
                         </td>
                       <td valign="top">
-                            <div class="myButton"><input type="submit" name="" value="Search" /></div>
+                            <div class="myButton"><input type="submit" name="sa" value="Search" /></div>
                         </td>
-                        <td align="left" valign="top">advanced search<br />
-                          preferences</td>
+                        <!--td align="left" valign="top">advanced search<br />
+                          preferences</td-->
                     </tr>
                 </table>
           </form>
+
+<script type="text/javascript" src="http://www.google.com/cse/tools/onthefly?form=searchbox_demo&lang="></script>
         </td>
     </tr>
     <tr>
