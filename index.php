@@ -164,6 +164,11 @@ if(isset($_GET['page']))
         $category = new category();
         $category->render($sub[1]);
     }
+    else if ($sub[0] == 'error')
+    {
+        require_once 'error.php';
+        $error = new error($request);
+    }
     else
     {
 
