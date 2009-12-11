@@ -68,7 +68,7 @@ if(isset($_GET['page']))
             }
             else
             {
-                header('location: '.baseURI.'error/modul/'.$subpage.'/');
+                header('location: '.baseURI.'error/'.$request.'/');
             }
 
 
@@ -172,7 +172,7 @@ if(isset($_GET['page']))
     else
     {
 
-        header('location: '.baseURI);
+        header('location: '.baseURI.'error/'.$request.'/');
     }
 }
 else
