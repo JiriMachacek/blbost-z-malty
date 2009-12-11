@@ -51,19 +51,6 @@ CREATE  TABLE IF NOT EXISTS `company` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `guestbook`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `guestbook` (
-  `id_guestbook` INT NOT NULL AUTO_INCREMENT ,
-  `company_id_company` INT NOT NULL ,
-  `name` VARCHAR(45) NOT NULL ,
-  `ip` VARCHAR(45) NOT NULL ,
-  `comment` VARCHAR(45) NOT NULL ,
-  `date` DATETIME NOT NULL ,
-  PRIMARY KEY (`id_guestbook`) ,
-  INDEX `fk_guestbook_company1` (`company_id_company` ASC) )
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -97,32 +84,7 @@ CREATE  TABLE IF NOT EXISTS `product` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `news`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `news` (
-  `id_news` INT NOT NULL AUTO_INCREMENT ,
-  `company_id_company` INT NOT NULL ,
-  `title` VARCHAR(45) NULL ,
-  `text` VARCHAR(45) NULL ,
-  `date` DATETIME NULL ,
-  PRIMARY KEY (`id_news`) ,
-  INDEX `fk_news_company1` (`company_id_company` ASC) )
-ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `events`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `events` (
-  `id_events` INT NOT NULL AUTO_INCREMENT ,
-  `company_id_company` INT NOT NULL ,
-  `title` VARCHAR(45) NULL ,
-  `text` VARCHAR(45) NULL ,
-  `date` DATETIME NULL ,
-  PRIMARY KEY (`id_events`) ,
-  INDEX `fk_news_company1` (`company_id_company` ASC) )
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
