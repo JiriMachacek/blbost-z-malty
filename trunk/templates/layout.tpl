@@ -40,7 +40,7 @@ var fileBottomNavCloseImage = "{$baseURI}/images/closelabel.gif";
                         	<li class="menu"><a href="{$baseURI}page/about-us/">About Us</a></li>
                             <li class="menu"><a href="{$baseURI}page/packages/">Packages</a></li>
                             
-                                {if $tpl_login}}
+                                {if $tpl_login}
                                     <li class="menu"><a href="{$baseURI}page/logout/">Log out</a></li>
                                 {else}
                                     <li class="menu"><a href="{$baseURI}page/login/">Sign In / Register</a></li>
