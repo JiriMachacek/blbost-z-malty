@@ -10,6 +10,8 @@ class companyManage extends company
     public function show()
     {
         $this->template->manage = $this->loadManage();
+        $this->loadCategories();
+        $this->loadSelectedCatagories();
         $this->smarty('companyManage');
     }
 
@@ -42,11 +44,31 @@ class companyManage extends company
             }
             $this->db->query('UPDATE company SET ', $arr, 'WHERE id_company=%i', $this->companyID);
 
+            $this->db->query('DELETE FROM company_has_category WHERE company_id_company=%i', $this->companyID);
+
+            $keys = array_unique($this->template->categorySelected);
+            $zero = array_search(0, $keys);
+            unset($keys[$zero]);
+            foreach ($keys as $variable) {
+
+                $args = array
+                (
+                    'company_id_company' => $this->companyID,
+                    'category_id_category' => $variable
+                );
+
+                $this->db->query('INSERT INTO company_has_category', $args);
+
+            }
+
+            $this->loadSelectedCatagories();
+
 
         }
 
         $this->template->manage = (object) $post;
         $this->template->error = $this->error;
+        $this->loadCategories();
         $this->smarty('companyManage');
     }
 
@@ -57,9 +79,58 @@ class companyManage extends company
                 ->fetch();
     }
 
+    private function loadCategories()
+    {
+        $all = $this->db->query('SELECT d.name AS dir, c.id_category AS id, c.name AS na FROM directory d JOIN category c ON c.directory_id_directory = d.id_directory')->fetchAll();
+
+        foreach ($all as $a)
+        {
+            $dir = $a['dir'];
+            $id = $a['id'];
+            $items[$dir][$id] = ' -'.$a['na'];
+        }
+        $category = array('- none -');
+        foreach ($items as $number_variable => $variable)
+        {
+            $category[$number_variable] = $number_variable;
+            $category+= $variable;
+
+        }
+
+        $this->template->categories = $category;
+
+    }
+    private function loadSelectedCatagories()
+    {
+          $this->template->categorySelected = $this->db->query('SELECT category_id_category FROM company_has_category WHERE company_id_company=%i', $this->companyID)->fetchAll();
+    }
+
     private function verifyPassword($post)
     {
-        if ($post['newpassword'] == '' && $post['newpassword'] == '' && $post['currentpassword'] == '')
+        $sum = 0;
+        $sum += (isset($post['gallery']))? 1 : 0;
+        $sum += (isset($post['guestbook']))? 1 : 0;
+        $sum += (isset($post['products']))? 1 : 0;
+        $sum += (isset($post['news']))? 1 : 0;
+        $sum += (isset($post['events']))? 1 : 0;
+        $sum += (isset($post['contact']))? 1 : 0;
+
+        $this->template->categorySelected[0] = (is_numeric($post['cat0'])) ? $post['cat0'] : 0;
+        $this->template->categorySelected[1] = (is_numeric($post['cat1'])) ? $post['cat1'] : 0;
+        $this->template->categorySelected[2] = (is_numeric($post['cat2'])) ? $post['cat2'] : 0;
+        $this->template->categorySelected[3] = (is_numeric($post['cat3'])) ? $post['cat3'] : 0;
+        $this->template->categorySelected[4] = (is_numeric($post['cat4'])) ? $post['cat4'] : 0;
+        $this->template->categorySelected[5] = (is_numeric($post['cat5'])) ? $post['cat5'] : 0;
+
+        if ($sum > 5)
+        {
+            $this->error = 'Choose less than 5 pages';
+        }
+        else if (array_sum($this->template->categorySelected) == 0)
+        {
+            $this->error = 'Choos any category';
+        }
+        else if ($post['newpassword'] == '' && $post['newpassword'] == '' && $post['currentpassword'] == '')
         {
             return true;
         }
