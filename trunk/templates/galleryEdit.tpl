@@ -2,11 +2,15 @@
                   	<table>
                     	<tr>
                         	<td>
+                                {if $pocet_obrazku neq '5'}
                             	<form id="form2" name="form2" method="post" action="{$baseURI}company/{$tpl_company.url}/gallery/gallery-upload-image/" enctype="multipart/form-data">
                                     <div style="float:left">Add New Image: <input name="backup" type="file" /> &nbsp;</div>
                                     <div class="myButton2" ><INPUT type="submit" name="" value="upload image"></div>
                                     <input type="hidden" value="{$tpl_company.url}" name="send" />
                                 </form>
+                                {else}
+                                You have allready uploaded 5 pictures. If you want to upload more, you must remove some of them.
+                                {/if}
                     		</td>
                     	</tr>
                     </table>

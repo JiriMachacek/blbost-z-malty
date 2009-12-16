@@ -5,7 +5,7 @@
     <tr>
         <td width="46px"></td>
         <td class="DirectoryText">
-        <h1>Company Name</h1>
+        <h1>{$tpl_company.name}</h1>
         	<table border="0" cellpadding="0" cellspacing="0">
             	<tr>
                 	<td>
@@ -52,7 +52,7 @@
                     {/if}
                 {elseif !$tpl_edit && isset($formEditImage)} <!-- user not logged -->
                     {if $formEditImage eq 'yes'} <!-- picture exists -->
-                        <img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="Company Name" />
+                        <img src="{$baseURI}images/companies/{$tpl_company.url}.jpg" alt="{$tpl_company.url}" />
                     {elseif $formEditImage eq 'no'} <!-- picture doesntt exists -->
                         <img src="{$baseURI}images/companies/default.jpg" alt="Company Name" />
                     {/if}
@@ -107,7 +107,7 @@
                                         <tr>
                                             <td><strong>Web:</strong></td>
                                             <td width="5px"></td>
-                                            <td>http://{$tpl_company.contact_www}</td>
+                                            <td><a href="http://{$tpl_company.contact_www}" target="_blank">http://{$tpl_company.contact_www}</a></td>
                                         </tr>
                                     </table>
                                 </td>
