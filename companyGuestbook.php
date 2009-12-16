@@ -29,7 +29,7 @@ class companyGuestbook extends company
                'company_id_company' => $this->companyID,
                'name' => $post['name'],
                'ip' => $_SERVER['REMOTE_ADDR'],
-               'comment' => $post['comment'],
+               'comment' => strip_tags($post['comment']),
                'date%sql' => 'NOW()'
            );
            $this->db->query('INSERT INTO guestbook', $arr);

@@ -35,7 +35,7 @@ class companyEvents extends company
             (
                 'company_id_company' => $this->companyID,
                 'title' => $post['eventtitle'],
-                'text' => $post['eventdescription'],
+                'text' => strip_tags($post['eventdescription']),
                 'date' => $date[2].'-'.$date[1].'-'.$date[0],
             );
 

@@ -41,7 +41,18 @@ class companyGallery extends company
                                     where company.url=%s
                                     order by gallery.position ASC", $this->companyName)->fetchAll();
         $this->template->gallery = $result;
-        $this->smarty('galleryEdit');
+        
+        $i=5;$count=0;
+        while($i>0){
+                if(file_exists("images/gallery/kkk_".$count.".jpg"))
+                    {
+                        $count++;
+
+                    }
+                    $i--;
+            }
+            $this->template->pocet_obrazku = $count;
+            $this->smarty('galleryEdit');
     }
 
     public function galleryDeleteImage($id,$file)

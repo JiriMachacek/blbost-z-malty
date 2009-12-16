@@ -32,7 +32,7 @@ class companyHome extends company
     {
         if(strlen($post['summary']) > 0)
         {
-            $this->db->query("UPDATE company SET content = '".$post['summary']."' WHERE id_company = '".$this->companyID."'");
+            $this->db->query("UPDATE company SET content = '".strip_tags($post['summary'])."' WHERE id_company = '".$this->companyID."'");
             header('location: '.baseURI.'company/'.$this->companyName.'/');
         }
         else

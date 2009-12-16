@@ -1,6 +1,11 @@
-        	<ul class="editmenu">
+{if $countProduct gt 4}
+You have allready added 5 products. If you want to add more, you must remove some of them.
+{else}
+<ul class="editmenu">
                 <li class="editmenu"><a href="{$baseURI}company/{$tpl_company.url}/products/add-product/">add new entry</a></li>
             </ul>
+{/if}
+
 {foreach from=$products item=i name=pr}
                    	  <h2>{$i.name}</h2>
                	    	<table width="100%" cellpadding="0" cellspacing="2" border="0">
@@ -25,7 +30,11 @@
 {foreachelse}
                             <li>No products found.</li>
 {/foreach}
-        	<ul class="editmenu">
+{if $countProduct gt 4}
+You have allready added 5 products. If you want to add more, you must remove some of them.
+{else}
+<ul class="editmenu">
                 <li class="editmenu"><a href="{$baseURI}company/{$tpl_company.url}/products/add-product/">add new entry</a></li>
             </ul>
+{/if}
            

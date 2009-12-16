@@ -29,9 +29,9 @@ class companyProducts extends company
     {
         if(isSet($_POST["add"]))
         {
-            if(isSet($_FILES["backup"]))
+            if(IsSet($_FILES["name"]))
             {
-                $img = $this->seo($_POST["productname"]);
+                $img = $this->companyName."-".$this->seo($_POST["productname"]);
             }
             else
             {
@@ -52,7 +52,7 @@ class companyProducts extends company
                         SELECT company.id_company
                         FROM company
                         WHERE company.url = '$this->companyName'
-                        ), '".$_POST["productname"]."', '".$this->companyName."-".$img."', '".$_POST["productsummary"]."', '".$_POST["price"]."'
+                        ), '".$_POST["productname"]."', '".$img."', '".strip_tags($_POST["productsummary"])."', '".$_POST["price"]."'
                         )");
           
                
@@ -72,8 +72,15 @@ class companyProducts extends company
                                     AND company.url = '$this->companyName'
                                     ORDER BY product.name ASC")->fetchAll();
         $this->template->products = $result;
-        $this->smarty('productsEdit');
+        
+        $count = $this->db->query("SELECT product.id_product AS id_product
+                                    FROM product, company
+                                    WHERE product.company_id_company = company.id_company
+                                    AND company.url = '$this->companyName'
+                                    ")->fetchAll();
 
+        $this->template->countProduct = count($count);
+        $this->smarty('productsEdit');
     }
     public function productEdit($id)
     {
@@ -89,7 +96,7 @@ class companyProducts extends company
             {
                 $image="";
             }
-            $this->db->query("UPDATE product SET description='".$_POST['productsummary']."', name='".$_POST['productname']."', price='".$_POST['price']."'  ".$image." WHERE id_product = '".$id."'");
+            $this->db->query("UPDATE product SET description='".strip_tags($_POST['productsummary'])."', name='".$_POST['productname']."', price='".$_POST['price']."'  ".$image." WHERE id_product = '".$id."'");
         }
         $result = $this->db->query("SELECT product.id_product AS id_product, product.price AS price, product.name AS name, product.description AS description, product.image AS image
                                     FROM product, company
