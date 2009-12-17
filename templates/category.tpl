@@ -74,7 +74,9 @@
                                 <td align="right" valign="bottom">
                                     <ul class="editmenu">
                                    	  <li class="editmenu"><a href="{$baseURI}company/{$i.url}/">more info</a></li>
+                                          {if $company_id eq $i.id_company}
                                         <li class="editmenu"><a href="{$baseURI}company/{$i.url}/edit/">edit details</a></li>
+                                        {/if}
                                         <!--li class="editmenu"><a href="removeentry.html?co=2">remove entry</a></li-->
                                     </ul>                    	
                     			</td>

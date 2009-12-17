@@ -146,7 +146,7 @@ abstract class main {
         $headers .= "From: $data->name <$data->email> \r\n";
         $headers .= 'Reply-To: '.$data->email;
 
-        if(mail($email, $data->subject, $data->message, $headers));
+        mail($email, $data->subject, $data->message, $headers);
     }
 
     public function seo($url) {
