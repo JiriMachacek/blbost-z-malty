@@ -9,15 +9,6 @@ session_start();
 require_once 'main.php';
 require_once 'user.php';
 
-require('FirePHPCore/FirePHP.class.php');
-
-$firephp = FirePHP::getInstance(true);
-
-$firephp->fb($_GET, 'get');
-$firephp->fb($_POST, 'post');
-$firephp->fb($_SESSION, 'session');
-
-
 $user = (isset($_SESSION['user'])) ? $_SESSION['user'] : 0;
 $us = user::getInstance();
 $us->setUserID($user);
@@ -27,7 +18,6 @@ if(isset($_GET['page']))
 {
     $request = $_GET['page'];
     $sub = explode('/', $request);
-    $firephp->fb($sub, 'sub');
 
     if($sub[0] == 'page')
     {
