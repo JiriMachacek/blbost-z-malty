@@ -37,7 +37,14 @@ class category extends main
                                             FROM category
                                             WHERE category.name = '$cat')");
         $this->template->categories = $result->fetchAll();
-
+        if(isset($_SESSION['user']))
+        {
+        $this->template->company_id = $_SESSION['user'];
+        }
+        else
+        {
+        $this->template->company_id = 0;
+        }
         //$result = $this->db->dataSource('SELECT * FROM category where category.name = "$cat"');
         //$this->template->category = $result->fetchAll();
         

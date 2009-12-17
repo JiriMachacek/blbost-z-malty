@@ -150,6 +150,10 @@ if(isset($_GET['page']))
             {
                 $page->delete($sub[4]);
             }
+            else if ($sub[3] == 'update')//edit of company details
+            {
+                $page->send($_POST);
+            }
         }
         else if (isset($_POST['send']))
         {
