@@ -135,6 +135,7 @@ class page extends main
 
         $name = $post['name'];
         $email = $post['email'];
+        $company = $post['company'];
 
         if($name == '')
         {
@@ -144,6 +145,11 @@ class page extends main
         if($email == '')
         {
             $this->error .= 'Insert email <br />';
+        }
+
+        if($company == '')
+        {
+            $this->error.= 'Insert company<br/>';
         }
 
         if($post['password'] == '')
@@ -164,7 +170,7 @@ class page extends main
         if ($this->error <> '')
             return false;
 
-        $sql = "SELECT nick, reg_email FROM company WHERE nick = '$name' OR reg_email = '$email'";
+        $sql = "SELECT nick, reg_email, name FROM company WHERE nick = '$name' OR reg_email = '$email' OR name='$company'";
 
         $result = $this->db->dataSource($sql);
 
@@ -175,11 +181,11 @@ class page extends main
         }
         else
         {
-            $sql = "INSERT INTO company (nick, password, reg_email) VALUES ('$name', '".$post['password']."', '$email')";
+            $sql = "INSERT INTO company (nick, password, reg_email, name) VALUES ('$name', '".$post['password']."', '$email', '$company')";
             $this->db->query($sql);
 
             $hash = sha1($post['password']);
-            $link = baseURI."/authorization.php?type=auth&hash=$hash";
+echo            $link = baseURI."authorization.php?type=auth&hash=$hash";
 
             $data = array
             (
@@ -189,7 +195,7 @@ class page extends main
                 'message' => "To confirm registration go to this page: <a href='$link'>$link</a>",
             );
 
-            $this->sendEmail($data, $email);
+//            $this->sendEmail($data, $email);
 
             die();
             return true;
