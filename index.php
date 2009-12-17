@@ -152,7 +152,7 @@ if(isset($_GET['page']))
             }
             else if ($sub[3] == 'update')//edit of company details
             {
-                $page->send($_POST);
+                $page->send();
             }
         }
         else if (isset($_POST['send']))
