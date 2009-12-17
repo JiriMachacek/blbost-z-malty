@@ -176,8 +176,22 @@ class page extends main
         else
         {
             $sql = "INSERT INTO company (nick, password, reg_email) VALUES ('$name', '".$post['password']."', '$email')";
-            echo $sql;
             $this->db->query($sql);
+
+            $hash = sha1($post['password']);
+            $link = baseURI."/authorization.php?type=auth&hash=$hash";
+
+            $data = array
+            (
+                'name' => 'Malta bussines center',
+                'email' => 'info@maltabussinescenter.com',
+                'subject' => 'Valid registration',
+                'message' => "To confirm registration go to this page: <a href='$link'>$link</a>",
+            );
+
+            $this->sendEmail($data, $email);
+
+            die();
             return true;
         }
     }
