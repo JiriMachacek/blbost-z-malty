@@ -70,9 +70,9 @@ class companyEdit extends company
                                         WHERE company.url = '".$this->companyName."'")->fetch();
             $this->template->company = $result;
             $this->template->country = array(
-            'Malta',
-            'Gozo',
-            'Comino',
+            'Malta' => 'Malta',
+            'Gozo' => 'Gozo',
+            'Comino' =>'Comino',
             );
             $this->template->robots = true;
 
