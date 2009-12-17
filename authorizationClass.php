@@ -26,9 +26,18 @@ class authorization extends main
 
     private function gb($hash)
     {
-        $id = $this->db
-            ->query('SELECT ')
-            ->fetchSingle();
+        $data = $this->db
+            ->query('SELECT id_guestbook AS id, c.url AS url
+                        FROM guestbook g
+                        JOIN company c ON c.id_company = g.company_id_company
+                        WHERE sha1(id_guestbook)=%s', $hash)
+            ->fetch();
+            $arg = array
+            (
+                'visible' => 'yes',
+            );
+        $this->db->query('UPDATE guestbook SET ', $arg, 'WHERE id_guestbook=%i',$data->id);
+        header('location: '.baseURI.'company/'.$data->url.'/guestbook/');
     }
 
     private function auth($hash)
