@@ -69,6 +69,11 @@ class companyEdit extends company
                                         FROM company
                                         WHERE company.url = '".$this->companyName."'")->fetch();
             $this->template->company = $result;
+            $this->template->country = array(
+            'Malta',
+            'Gozo',
+            'Comino',
+            );
             $this->template->robots = true;
 
             $this->smarty('companyEdit');

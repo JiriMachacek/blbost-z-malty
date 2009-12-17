@@ -49,7 +49,11 @@
                                     <label for="adress_country">Adress country</label>
                                 </td>
                                 <td valign="top">
-                                    <input name="adress_country" type="text" id="adress_country" value="{$company.adress_country}" size="60" />
+                                    {if isset($company.adress_country)}
+                                        {html_options name=adress_country options=$country selected=$company.adress_country}
+                                    {else}
+                                        {html_options name=adress_country options=$country}
+                                    {/if}
                                 </td>
                             </tr>
                             <tr>
