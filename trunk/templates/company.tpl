@@ -106,7 +106,7 @@
                                         <tr>
                                             <td><strong>Email:</strong></td>
                                             <td width="5px"></td>
-                                            <td>{$tpl_company.contact_email}</td>
+                                            <td>{if $tpl_company.contact_email}{mailto address=$tpl_company.contact_email  encode="javascript"}{/if}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Web:</strong></td>
