@@ -32,4 +32,4 @@ CREATE TABLE IF NOT EXISTS `company` (
   `image` enum('no','yes') NOT NULL DEFAULT 'no',
   PRIMARY KEY (`id_company`),
   KEY `fk_company_locality` (`locality_id_locality`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

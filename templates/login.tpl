@@ -57,6 +57,11 @@
                     	      <td><input name="email" value="{if isset($email)}{$email}{/if}" type="text" size="45" /></td>
                   	      </tr>
                     	    <tr>
+                    	    <tr>
+                    	      <td><strong>Company:</strong></td>
+                    	      <td><input name="company" value="{if isset($company)}{$company}{/if}" type="text" size="45" /></td>
+                  	      </tr>
+                    	    <tr>
                     	      <td><strong>Password:</strong></td>
                     	      <td><input name="password" type="text" size="45" /></td>
                   	      </tr>
