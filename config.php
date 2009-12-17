@@ -22,7 +22,7 @@ define('baseURI', 'http://'.$_SERVER['HTTP_HOST'].'/blbost-z-malty/');
 define('captcha_length', 5);
 define('captcha_acceptedChars', 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789');
 
-define('DEBUGING', TRUE);
+define('DEBUGING', FALSE);
 
 define('MAX_PHOTOS', 5);
 ?>
