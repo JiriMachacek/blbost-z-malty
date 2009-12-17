@@ -20,7 +20,23 @@ class companyGuestbook extends company
         }
     }
 
-    public function send($post)
+    public function showOK()
+    {
+        if($this->companyInfo->guestbook == 'yes')
+        {
+            $this->template->error = "Your post is waiting to the confirm!";
+            $this->loadGuestbook();
+            $this->template->kcaptcha = $this->generatePassword();
+            $this->smarty('companyGuestbook');
+        }
+        else
+        {
+            header('location: '.baseURI.'error/company/'.$this->companyName.'/guestbook/');
+        }
+    }
+
+
+public function send($post)
     {
          if ($this->validPost($post))
          {
@@ -30,11 +46,31 @@ class companyGuestbook extends company
                'name' => $post['name'],
                'ip' => $_SERVER['REMOTE_ADDR'],
                'comment' => strip_tags($post['comment']),
-               'date%sql' => 'NOW()'
+               'date%sql' => 'NOW()',
+               'visible' => 'no'
            );
            $this->db->query('INSERT INTO guestbook', $arr);
            $this->deletePassword();
-           header('location: '.baseURI.'company/'.$this->companyName.'/guestbook/');
+
+           $lastID = $this->db->query("SELECT max(id_guestbook) FROM guestbook WHERE company_id_company=%i",$this->companyID)->fetchSingle();
+
+           $hash = sha1($lastID);
+       $link = baseURI."authorization.php?type=gb&hash=$hash";
+
+            $data = array
+            (
+                'name' => 'Malta bussines center',
+                'email' => 'info@maltabussinescenter.com',
+                'subject' => 'Comfirm guestbook post',
+                'message' => "To confirm guestbook post go to this page: <a href='$link'>$link</a><br />"
+                                ."<strong>name </strong> "
+                                .$post['name']."<br />"
+                                ."<strong>text </strong>".strip_tags($post['comment']),
+            );
+
+           $this->sendEmail($data, $this->companyInfo->contact_email);
+
+           header('location: '.baseURI.'company/'.$this->companyName.'/guestbook/ok/');
          }
         $this->template = (object) $post;
         $this->loadGuestbook();
@@ -44,12 +80,14 @@ class companyGuestbook extends company
         $this->smarty('companyGuestbook');
     }
 
-    private function loadGuestbook()
+    private function loadGuestbook($all = false)
     {
-        $sql = 'SELECT name, ip, comment, date, id_guestbook
+        $sql = "SELECT name, ip, comment, date, id_guestbook
                 FROM guestbook
-                WHERE company_id_company = %i
-                ORDER BY date DESC';
+                WHERE company_id_company = %i ";
+        if(!$all)
+            $sql .= "AND visible='yes'";
+        $sql .= "ORDER BY date DESC";
         $this->template->guestbook = $this->db->query($sql, $this->companyID)->fetchAll();
     }
 
@@ -84,7 +122,7 @@ class companyGuestbook extends company
         }
         $this->template->robots = true;
 
-        $this->loadGuestbook();
+        $this->loadGuestbook(true);
         $this->template->robots = true;
         $this->template->error = $this->error;
 
