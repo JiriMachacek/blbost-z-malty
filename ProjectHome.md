@@ -1,0 +1,1 @@
+nebudu to radeji popisovat... neni k tomu slov ;)
